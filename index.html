@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nathan B. Smith — Technical Writing Samples</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#14233A;
+    --navy-2:#1D3252;
+    --paper:#ECEEE7;
+    --paper-2:#E2E5DC;
+    --ink:#1B1F22;
+    --steel:#5C6B73;
+    --steel-light:#8B99A0;
+    --line:#C7CDC4;
+    --blue:#2E6E8E;
+    --amber:#B5791E;
+    --red:#9C3B2E;
+    --green:#3F6B4C;
+    --radius:2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:16px;
+    line-height:1.55;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:inherit;}
+
+  /* ---------- Title block header ---------- */
+  header.titleblock{
+    background:var(--navy);
+    color:var(--paper);
+    border-bottom:6px solid var(--amber);
+  }
+  .tb-inner{
+    max-width:1040px;
+    margin:0 auto;
+    padding:2.2rem 1.5rem 1.6rem;
+  }
+  .tb-eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--steel-light);
+    margin-bottom:0.6rem;
+  }
+  .tb-title{
+    font-size:2.1rem;
+    font-weight:700;
+    margin:0 0 0.3rem;
+    letter-spacing:-0.01em;
+  }
+  .tb-sub{
+    font-size:1.02rem;
+    color:#C9D3D9;
+    margin:0 0 1.6rem;
+    max-width:620px;
+  }
+  table.tb-fields{
+    width:100%;
+    border-collapse:collapse;
+    border-top:1px solid rgba(255,255,255,0.18);
+  }
+  table.tb-fields td{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.78rem;
+    padding:0.65rem 0.9rem 0.65rem 0;
+    border-right:1px solid rgba(255,255,255,0.18);
+    vertical-align:top;
+  }
+  table.tb-fields td:last-child{border-right:none;}
+  table.tb-fields .field-label{
+    display:block;
+    color:var(--steel-light);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    font-size:0.65rem;
+    margin-bottom:0.25rem;
+  }
+  table.tb-fields .field-value{
+    color:#EDEEE7;
+    font-size:0.86rem;
+  }
+  table.tb-fields a.field-value{ text-decoration:underline; text-underline-offset:2px; }
+
+  /* ---------- Body ---------- */
+  main{
+    max-width:1040px;
+    margin:0 auto;
+    padding:2.6rem 1.5rem 4rem;
+  }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:0.7rem;
+    margin:0 0 0.4rem;
+    border-bottom:2px solid var(--ink);
+    padding-bottom:0.5rem;
+  }
+  .section-num{
+    font-family:'IBM Plex Mono',monospace;
+    color:var(--blue);
+    font-weight:600;
+  }
+  .section-head h2{
+    font-size:1.1rem;
+    margin:0;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+  }
+  .lede{
+    color:var(--steel);
+    max-width:680px;
+    margin:1rem 0 2rem;
+    font-size:0.97rem;
+  }
+
+  /* stamp */
+  .stamp{
+    display:inline-block;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.68rem;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--red);
+    border:1.5px solid var(--red);
+    padding:0.2rem 0.55rem;
+    border-radius:2px;
+    transform:rotate(-2deg);
+    margin-bottom:1.6rem;
+  }
+
+  /* ---------- Sample cards ---------- */
+  .sample-list{
+    display:flex;
+    flex-direction:column;
+    gap:1.1rem;
+  }
+  .card{
+    background:#F5F6F1;
+    border:1px solid var(--line);
+    border-left:4px solid var(--blue);
+    border-radius:var(--radius);
+    padding:1.3rem 1.4rem 1.4rem;
+  }
+  .card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:1rem;
+    flex-wrap:wrap;
+  }
+  .card-dmc{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.7rem;
+    color:var(--steel);
+    letter-spacing:0.04em;
+  }
+  .card-title{
+    font-size:1.15rem;
+    font-weight:600;
+    margin:0.25rem 0 0.5rem;
+  }
+  .tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.4rem;
+    margin:0.2rem 0 0.8rem;
+  }
+  .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.66rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--navy-2);
+    background:#DDE3D9;
+    border:1px solid var(--line);
+    padding:0.18rem 0.5rem;
+    border-radius:2px;
+  }
+  .card-desc{
+    font-size:0.92rem;
+    color:#33393C;
+    margin:0 0 1rem;
+    max-width:640px;
+  }
+  .card-actions{
+    display:flex;
+    gap:0.6rem;
+    flex-wrap:wrap;
+  }
+  .btn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.75rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    text-decoration:none;
+    padding:0.55rem 0.9rem;
+    border-radius:2px;
+    border:1px solid var(--navy);
+    display:inline-flex;
+    align-items:center;
+    gap:0.4rem;
+    transition:background 0.15s ease, color 0.15s ease;
+  }
+  .btn-primary{
+    background:var(--navy);
+    color:var(--paper);
+  }
+  .btn-primary:hover{ background:var(--navy-2); }
+  .btn-ghost{
+    background:transparent;
+    color:var(--navy);
+  }
+  .btn-ghost:hover{ background:var(--navy); color:var(--paper); }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--navy);
+    color:var(--steel-light);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.75rem;
+    padding:1.6rem 1.5rem;
+    text-align:center;
+  }
+  footer a{ color:#C9D3D9; }
+
+  @media (max-width:640px){
+    table.tb-fields{ display:block; }
+    table.tb-fields tr{ display:flex; flex-direction:column; }
+    table.tb-fields td{ border-right:none; border-bottom:1px solid rgba(255,255,255,0.18); padding:0.55rem 0; }
+    .tb-title{ font-size:1.6rem; }
+  }
+
+  :focus-visible{
+    outline:2px solid var(--amber);
+    outline-offset:2px;
+  }
+</style>
+</head>
+<body>
+
+<header class="titleblock">
+  <div class="tb-inner">
+    <div class="tb-eyebrow">DOC-NBS-PORTFOLIO-001 · Issue 1 · 2026-07-07</div>
+    <h1 class="tb-title">Nathan B. Smith</h1>
+    <p class="tb-sub">Senior Principal Technical Writer &amp; Systems Engineer — S1000D / MIL-STD / IETM Documentation for Defense &amp; Aerospace Programs</p>
+    <table class="tb-fields">
+      <tr>
+        <td>
+          <span class="field-label">Location</span>
+          <span class="field-value">San Diego, CA</span>
+        </td>
+        <td>
+          <span class="field-label">Clearance</span>
+          <span class="field-value">Secret — Active</span>
+        </td>
+        <td>
+          <span class="field-label">Contact</span>
+          <a class="field-value" href="mailto:nbsmith@outlook.com">nbsmith@outlook.com</a>
+        </td>
+        <td>
+          <span class="field-label">LinkedIn</span>
+          <a class="field-value" href="https://linkedin.com/in/nathanbsmith92163" target="_blank" rel="noopener">/in/nathanbsmith92163</a>
+        </td>
+        <td>
+          <span class="field-label">Résumé</span>
+          <a class="field-value" href="Nathan_Smith_Resume.pdf" download>Download PDF</a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+
+<main>
+
+  <section aria-labelledby="about-h">
+    <div class="section-head">
+      <span class="section-num">00</span>
+      <h2 id="about-h">General Information</h2>
+    </div>
+    <p class="lede">
+      This repository collects representative technical writing samples spanning Simplified Technical
+      English (STE) editing, S1000D-conformant Interactive Electronic Technical Manuals (IETMs), fault
+      isolation procedures, illustrated parts catalogs, and systems operator guides — drawn from 15+ years
+      writing DoD- and industrial-compliant documentation for programs including the RQ-4 Global Hawk,
+      EMALS/Ford-class carriers, and commercial aircraft maintenance publications.
+    </p>
+    <div class="stamp">Sample — Hypothetical / Non-Proprietary</div>
+    <p class="lede" style="margin-top:-0.8rem;">
+      Every sample below was authored independently by Nathan Smith as a demonstration of technical
+      writing method and format conformance. None contain classified, export-controlled, or proprietary
+      data — all part numbers, drawings, and technical values are fictional. Each PDF carries its own
+      disclaimer on the cover page.
+    </p>
+  </section>
+
+  <section aria-labelledby="samples-h" style="margin-top:2.4rem;">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 id="samples-h">Writing Samples</h2>
+    </div>
+
+    <div class="sample-list">
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-01 · Solar Turbines–style · STE Editing</div>
+            <h3 class="card-title">Simplified Technical English: Before &amp; After</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">ASD-STE100</span>
+          <span class="tag">Editing</span>
+          <span class="tag">2 pages</span>
+        </div>
+        <p class="card-desc">
+          Side-by-side comparison of an unstructured engineer-supplied draft and its edited, STE-conformant
+          procedure. Demonstrates controlled vocabulary, imperative mood, logical sequencing, and the
+          judgment calls behind adding a safety note the source material implied but never stated.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/01-ste-editing-before-after.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/01-ste-editing-before-after.pdf" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-02 · Task 71-00-00-810-801 · IETM / FIP</div>
+            <h3 class="card-title">Fault Isolation Procedure — High Vibration Alarm</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">S1000D</span>
+          <span class="tag">USAF Style</span>
+          <span class="tag">Decision Tree</span>
+        </div>
+        <p class="card-desc">
+          A full S1000D-conformant fault isolation procedure built as a branching decision tree, synthesizing
+          fictional schematic, performance-limit, and calibration test data into a five-step diagnostic flow
+          with warnings, cautions, torque/tolerance callouts, and part-number traceability.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/02-fault-isolation-procedure.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/02-fault-isolation-procedure.pdf" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-03 · DMC-A12-00-00-04A-520A-A · IPC</div>
+            <h3 class="card-title">Illustrated Parts Catalog — Turbine Air Inlet Assembly</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">S1000D Issue 5.0</span>
+          <span class="tag">IPC</span>
+          <span class="tag">BOM</span>
+        </div>
+        <p class="card-desc">
+          A parts-catalog excerpt with a nine-line bill of material, CAGE codes, and item-level installation
+          and torque notes cross-referenced to figure callouts and related data modules — demonstrating IPC
+          structure independent of the (not-included) exploded-view illustration.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/03-s1000d-ipc-excerpt.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/03-s1000d-ipc-excerpt.pdf" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-04 · XG500-OG-001 · Operator Guide</div>
+            <h3 class="card-title">Systems Operator Guide — Startup, Operation &amp; Shutdown</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">STE</span>
+          <span class="tag">Operator Procedures</span>
+          <span class="tag">6 pages</span>
+        </div>
+        <p class="card-desc">
+          A full operator guide section for a hypothetical gas turbine package: pre-startup checks, an
+          automatic start sequence with permissive limits, a normal-operation parameter table with alarm and
+          shutdown setpoints, planned shutdown, and emergency shutdown procedures.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/04-systems-operator-guide.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/04-systems-operator-guide.pdf" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-05 · DMC-XRENG-A-72-60-00-00A-520A-D · Procedure</div>
+            <h3 class="card-title">Lube Oil Filter Element — Removal and Installation</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">S1000D Issue 4.2</span>
+          <span class="tag">ATA 72-60</span>
+          <span class="tag">R&amp;I</span>
+        </div>
+        <p class="card-desc">
+          A complete removal/installation data module: preliminary conditions, support equipment and
+          consumables tables, numbered removal and installation steps with torque values, and a
+          post-installation leak check — formatted to full S1000D schema conventions.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/05-s1000d-removal-installation.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/05-s1000d-removal-installation.pdf" download>Download</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div>© 2026 Nathan B. Smith · Samples prepared for demonstration purposes only · Not affiliated with any employer named within</div>
+</footer>
+
+</body>
+</html>
