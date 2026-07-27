@@ -291,11 +291,12 @@
       <h2 id="about-h">General Information</h2>
     </div>
     <p class="lede">
-      This repository collects representative technical writing samples spanning Simplified Technical
-      English (STE) editing, S1000D-conformant Interactive Electronic Technical Manuals (IETMs), fault
-      isolation procedures, illustrated parts catalogs, and systems operator guides — drawn from 15+ years
-      writing DoD- and industrial-compliant documentation for programs including the RQ-4 Global Hawk,
-      EMALS/Ford-class carriers, and commercial aircraft maintenance publications.
+      This repository collects representative technical writing samples across four skill areas: structured
+      authoring (S1000D IETMs, DITA topic sets), standards compliance (DID/CDRL and CUI-aware documentation
+      practice), editing craft (Simplified Technical English and plain-language reference tools), and systems
+      &amp; process thinking (documentation change control, governance workflows, and engineering literacy) —
+      drawn from 15+ years writing DoD- and industrial-compliant documentation for programs including the
+      RQ-4 Global Hawk, EMALS/Ford-class carriers, and commercial aircraft maintenance publications.
     </p>
     <div class="stamp">Sample — Hypothetical / Non-Proprietary</div>
     <p class="lede" style="margin-top:-0.8rem;">
@@ -342,11 +343,192 @@
     </div>
   </section>
 
-  <section aria-labelledby="samples-h" style="margin-top:2.4rem;">
+  <section aria-labelledby="structured-h" style="margin-top:2.4rem;">
     <div class="section-head">
       <span class="section-num">02</span>
-      <h2 id="samples-h">Writing Samples</h2>
+      <h2 id="structured-h">Structured Authoring</h2>
     </div>
+    <p class="lede" style="margin-bottom:1.2rem;">
+      Building information into the schema it belongs in — S1000D data modules and DITA topic sets —
+      rather than narrative prose with formatting applied on top.
+    </p>
+
+    <div class="sample-list">
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-02 · Task 71-00-00-810-801 · IETM / FIP</div>
+            <h3 class="card-title">Fault Isolation Procedure — High Vibration Alarm</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">S1000D</span>
+          <span class="tag">USAF Style</span>
+          <span class="tag">Decision Tree</span>
+        </div>
+        <p class="card-desc">
+          A full S1000D-conformant fault isolation procedure built as a branching decision tree, synthesizing
+          fictional schematic, performance-limit, and calibration test data into a five-step diagnostic flow
+          with warnings, cautions, torque/tolerance callouts, and part-number traceability. Demonstrates
+          fault-tree logic under the S1000D schema and traceability from symptom to part number.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/02-fault-isolation-procedure.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/02-fault-isolation-procedure.pdf" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-03 · DMC-A12-00-00-04A-520A-A · IPC</div>
+            <h3 class="card-title">Illustrated Parts Catalog — Turbine Air Inlet Assembly</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">S1000D Issue 5.0</span>
+          <span class="tag">IPC</span>
+          <span class="tag">BOM</span>
+        </div>
+        <p class="card-desc">
+          A parts-catalog excerpt with a nine-line bill of material, CAGE codes, and item-level installation
+          and torque notes cross-referenced to figure callouts and related data modules. Demonstrates IPC
+          structure and cross-reference discipline independent of the (not-included) exploded-view illustration.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/03-s1000d-ipc-excerpt.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/03-s1000d-ipc-excerpt.pdf" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-04 · XG500-OG-001 · Operator Guide</div>
+            <h3 class="card-title">Systems Operator Guide — Startup, Operation &amp; Shutdown</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">STE</span>
+          <span class="tag">Operator Procedures</span>
+          <span class="tag">6 pages</span>
+        </div>
+        <p class="card-desc">
+          A full operator guide section for a hypothetical gas turbine package: pre-startup checks, an
+          automatic start sequence with permissive limits, a normal-operation parameter table with alarm and
+          shutdown setpoints, planned shutdown, and emergency shutdown procedures. Demonstrates organizing a
+          long operating envelope into a sequence an operator can follow under time pressure.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/04-systems-operator-guide.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/04-systems-operator-guide.pdf" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-05 · DMC-XRENG-A-72-60-00-00A-520A-D · Procedure</div>
+            <h3 class="card-title">Lube Oil Filter Element — Removal and Installation</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">S1000D Issue 4.2</span>
+          <span class="tag">ATA 72-60</span>
+          <span class="tag">R&amp;I</span>
+        </div>
+        <p class="card-desc">
+          A complete removal/installation data module: preliminary conditions, support equipment and
+          consumables tables, numbered removal and installation steps with torque values, and a
+          post-installation leak check. Demonstrates full S1000D schema conventions on a routine
+          maintenance task.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/05-s1000d-removal-installation.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/05-s1000d-removal-installation.pdf" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-07 · WI-QA-8.5-014 · DITA Topic Set + Map</div>
+            <h3 class="card-title">AI-Assisted Work Instruction — ISO 9001 / AS9100 via Microsoft Foundry</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">DITA 1.3</span>
+          <span class="tag">ISO 9001 / AS9100D</span>
+          <span class="tag">Topic-based Authoring</span>
+        </div>
+        <p class="card-desc">
+          A quality-system Work Instruction built as seven DITA topics (concept, task, reference,
+          and glossgroup/glossentry) organized under a single map with topichead groupings and
+          cross-references, documenting an AI-assisted drafting pipeline in Microsoft Foundry for a
+          fictional company, TechCoaches Information Systems Design. Demonstrates DITA topic typing and
+          map structure; the rendered PDF is a convenience preview, the DITA source is the authoritative
+          artifact.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/07-dita-iso-work-instruction-preview.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/07-dita-iso-work-instruction-preview.pdf" download>Download PDF</a>
+          <a class="btn btn-ghost" href="samples/07-dita-iso-work-instruction-source.zip" download>Download DITA Source (.zip)</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section aria-labelledby="standards-h" style="margin-top:2.4rem;">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 id="standards-h">Standards Compliance</h2>
+    </div>
+    <p class="lede" style="margin-bottom:1.2rem;">
+      Knowing which standard governs a deliverable, in what order it's overridden, and why — the
+      layer of judgment that sits above any one document.
+    </p>
+
+    <div class="sample-list">
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-11 · DOC-NBS-SAMPLE-11 · Reference Page</div>
+            <h3 class="card-title">The Authority Stack — Which Standard Wins</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">DoD / Navy Standards</span>
+          <span class="tag">DI-IPSC Series</span>
+          <span class="tag">CUI / RMF</span>
+        </div>
+        <p class="card-desc">
+          A seven-tier reference ranking the standards, DIDs, and directives that could govern a
+          NIWC Pacific–style documentation deliverable — from CDRL/DD 1423 contract documents down to
+          routinely-skipped federal mandates like Section 508 — each rated for how likely it is to
+          actually be in force. Demonstrates command of the DoD/Navy documentation standards landscape
+          and the judgment to model authority precedence rather than list standards flatly.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/11-documentation-standards-stack.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/11-documentation-standards-stack.pdf" download>Download</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section aria-labelledby="editing-h" style="margin-top:2.4rem;">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2 id="editing-h">Editing Craft</h2>
+    </div>
+    <p class="lede" style="margin-bottom:1.2rem;">
+      Finding exactly what's wrong with a sentence or a procedure, naming it precisely, and fixing it
+      by rule rather than by feel — plus the reference tools that teach the rule to someone else.
+    </p>
 
     <div class="sample-list">
 
@@ -376,94 +558,93 @@
       <article class="card">
         <div class="card-top">
           <div>
-            <div class="card-dmc">SAMPLE-02 · Task 71-00-00-810-801 · IETM / FIP</div>
-            <h3 class="card-title">Fault Isolation Procedure — High Vibration Alarm</h3>
+            <div class="card-dmc">SAMPLE-08 · S1000D Issue 5.0 · Before / After / Rationale</div>
+            <h3 class="card-title">Legacy Procedure Remediation — Hydraulic Test Stand HTS-100</h3>
           </div>
         </div>
         <div class="tags">
           <span class="tag">S1000D</span>
-          <span class="tag">USAF Style</span>
-          <span class="tag">Decision Tree</span>
+          <span class="tag">ASD-STE100</span>
+          <span class="tag">Hazard Classification</span>
         </div>
         <p class="card-desc">
-          A full S1000D-conformant fault isolation procedure built as a branching decision tree, synthesizing
-          fictional schematic, performance-limit, and calibration test data into a five-step diagnostic flow
-          with warnings, cautions, torque/tolerance callouts, and part-number traceability.
+          A three-module case study: a defect-riddled legacy servicing procedure with a 12-item defect
+          index, the same procedure rewritten as a full S1000D data module in Simplified Technical
+          English, and a rationale section that maps every change back to the specific STE rule or
+          S1000D element that required it. Demonstrates diagnostic editing (naming exactly what's wrong
+          and why), correct WARNING/CAUTION/NOTE classification, and the discipline to flag open
+          engineering questions instead of inventing values.
         </p>
         <div class="card-actions">
-          <a class="btn btn-primary" href="samples/02-fault-isolation-procedure.pdf" target="_blank" rel="noopener">View PDF</a>
-          <a class="btn btn-ghost" href="samples/02-fault-isolation-procedure.pdf" download>Download</a>
+          <a class="btn btn-primary" href="samples/08-legacy-procedure-remediation-hts100.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/08-legacy-procedure-remediation-hts100.pdf" download>Download</a>
         </div>
       </article>
 
       <article class="card">
         <div class="card-top">
           <div>
-            <div class="card-dmc">SAMPLE-03 · DMC-A12-00-00-04A-520A-A · IPC</div>
-            <h3 class="card-title">Illustrated Parts Catalog — Turbine Air Inlet Assembly</h3>
+            <div class="card-dmc">SAMPLE-09 · DOC-NBS-SAMPLE-09 · Interactive Reference (HTML)</div>
+            <h3 class="card-title">Passive to Active — One-Page Editing Reference</h3>
           </div>
         </div>
         <div class="tags">
-          <span class="tag">S1000D Issue 5.0</span>
-          <span class="tag">IPC</span>
-          <span class="tag">BOM</span>
+          <span class="tag">Editing Reference</span>
+          <span class="tag">Style Coaching</span>
+          <span class="tag">SVG</span>
         </div>
         <p class="card-desc">
-          A parts-catalog excerpt with a nine-line bill of material, CAGE codes, and item-level installation
-          and torque notes cross-referenced to figure callouts and related data modules — demonstrating IPC
-          structure independent of the (not-included) exploded-view illustration.
+          A single-page reference built for other editors: three ways to spot a passive construction,
+          an SVG diagram of the actor/target rotation, five fallback moves for sentences that won't
+          rotate cleanly, and guidance on when to leave passive voice alone. Demonstrates the ability
+          to teach an editing principle rather than just apply it, and to build a lightweight,
+          dependency-free reference tool.
         </p>
         <div class="card-actions">
-          <a class="btn btn-primary" href="samples/03-s1000d-ipc-excerpt.pdf" target="_blank" rel="noopener">View PDF</a>
-          <a class="btn btn-ghost" href="samples/03-s1000d-ipc-excerpt.pdf" download>Download</a>
+          <a class="btn btn-primary" href="samples/09-passive-to-active-cheat-sheet.html" target="_blank" rel="noopener">Open Page</a>
+          <a class="btn btn-ghost" href="samples/09-passive-to-active-cheat-sheet.html" download>Download</a>
         </div>
       </article>
 
       <article class="card">
         <div class="card-top">
           <div>
-            <div class="card-dmc">SAMPLE-04 · XG500-OG-001 · Operator Guide</div>
-            <h3 class="card-title">Systems Operator Guide — Startup, Operation &amp; Shutdown</h3>
+            <div class="card-dmc">SAMPLE-10 · DOC-NBS-SAMPLE-10 · Interactive Reference (HTML)</div>
+            <h3 class="card-title">ASD-STE100 — Ten Rules That Fix Most of It</h3>
           </div>
         </div>
         <div class="tags">
-          <span class="tag">STE</span>
-          <span class="tag">Operator Procedures</span>
-          <span class="tag">6 pages</span>
+          <span class="tag">ASD-STE100</span>
+          <span class="tag">Interactive Tool</span>
+          <span class="tag">JavaScript</span>
         </div>
         <p class="card-desc">
-          A full operator guide section for a hypothetical gas turbine package: pre-startup checks, an
-          automatic start sequence with permissive limits, a normal-operation parameter table with alarm and
-          shutdown setpoints, planned shutdown, and emergency shutdown procedures.
+          An interactive one-pager distilling ASD-STE100's 65 writing rules down to the ten that
+          generate the most findings in a real edit pass, each with a not-approved/approved pair, plus
+          a live checker that flags passive voice, hedged instructions, non-approved words, and noun
+          clusters in pasted text. Demonstrates STE fluency, information design for reference material,
+          and basic front-end scripting applied to an editing problem.
         </p>
         <div class="card-actions">
-          <a class="btn btn-primary" href="samples/04-systems-operator-guide.pdf" target="_blank" rel="noopener">View PDF</a>
-          <a class="btn btn-ghost" href="samples/04-systems-operator-guide.pdf" download>Download</a>
+          <a class="btn btn-primary" href="samples/10-ste100-cheat-sheet.html" target="_blank" rel="noopener">Open Page</a>
+          <a class="btn btn-ghost" href="samples/10-ste100-cheat-sheet.html" download>Download</a>
         </div>
       </article>
 
-      <article class="card">
-        <div class="card-top">
-          <div>
-            <div class="card-dmc">SAMPLE-05 · DMC-XRENG-A-72-60-00-00A-520A-D · Procedure</div>
-            <h3 class="card-title">Lube Oil Filter Element — Removal and Installation</h3>
-          </div>
-        </div>
-        <div class="tags">
-          <span class="tag">S1000D Issue 4.2</span>
-          <span class="tag">ATA 72-60</span>
-          <span class="tag">R&amp;I</span>
-        </div>
-        <p class="card-desc">
-          A complete removal/installation data module: preliminary conditions, support equipment and
-          consumables tables, numbered removal and installation steps with torque values, and a
-          post-installation leak check — formatted to full S1000D schema conventions.
-        </p>
-        <div class="card-actions">
-          <a class="btn btn-primary" href="samples/05-s1000d-removal-installation.pdf" target="_blank" rel="noopener">View PDF</a>
-          <a class="btn btn-ghost" href="samples/05-s1000d-removal-installation.pdf" download>Download</a>
-        </div>
-      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="systems-h" style="margin-top:2.4rem;">
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2 id="systems-h">Systems &amp; Process Thinking</h2>
+    </div>
+    <p class="lede" style="margin-bottom:1.2rem;">
+      Documentation work that sits above any one deliverable: the workflow a document moves through,
+      the governance around a new tool, and the engineering literacy that makes both possible.
+    </p>
+
+    <div class="sample-list">
 
       <article class="card">
         <div class="card-top">
@@ -492,26 +673,52 @@
       <article class="card">
         <div class="card-top">
           <div>
-            <div class="card-dmc">SAMPLE-07 · WI-QA-8.5-014 · DITA Topic Set + Map</div>
-            <h3 class="card-title">AI-Assisted Work Instruction — ISO 9001 / AS9100 via Microsoft Foundry</h3>
+            <div class="card-dmc">SAMPLE-12 · DOC-NBS-SAMPLE-12 · DITA Process Document</div>
+            <h3 class="card-title">Documentation Change Control and Delivery Tracking Procedure</h3>
           </div>
         </div>
         <div class="tags">
-          <span class="tag">DITA 1.3</span>
-          <span class="tag">ISO 9001 / AS9100D</span>
-          <span class="tag">Topic-based Authoring</span>
+          <span class="tag">DITA</span>
+          <span class="tag">GitLab Workflow</span>
+          <span class="tag">CUI Handling</span>
         </div>
         <p class="card-desc">
-          A quality-system Work Instruction built as seven DITA topics (concept, task, reference,
-          and glossgroup/glossentry) organized under a single map with topichead groupings and
-          cross-references, documenting an AI-assisted drafting pipeline in Microsoft Foundry for a
-          fictional company, TechCoaches Information Systems Design. The rendered PDF is a
-          convenience preview; the DITA source is the authoritative artifact.
+          A DITA-structured process document defining the full GitLab-based lifecycle of a contract
+          documentation deliverable — issue, branch, merge request, dual approval, tag, CUI marking, and
+          delivery to a government Configuration Manager — with role definitions, revision-log and
+          delivery-register formats, and a GitLab label taxonomy. Demonstrates process documentation for
+          a regulated deliverable pipeline and DITA topic typing (concept/task/reference) applied outside
+          a hardware-manual context.
         </p>
         <div class="card-actions">
-          <a class="btn btn-primary" href="samples/07-dita-iso-work-instruction-preview.pdf" target="_blank" rel="noopener">View PDF</a>
-          <a class="btn btn-ghost" href="samples/07-dita-iso-work-instruction-preview.pdf" download>Download PDF</a>
-          <a class="btn btn-ghost" href="samples/07-dita-iso-work-instruction-source.zip" download>Download DITA Source (.zip)</a>
+          <a class="btn btn-primary" href="samples/12-documentation-change-control-procedure.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/12-documentation-change-control-procedure.pdf" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-13 · DOC-NBS-SAMPLE-13 · Tutorial</div>
+            <h3 class="card-title">C++ for Technical Writers</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">Self-Directed Learning</span>
+          <span class="tag">Engineering Literacy</span>
+          <span class="tag">Tutorial Authoring</span>
+        </div>
+        <p class="card-desc">
+          A from-zero C++ tutorial written for documentation professionals: installing a toolchain on
+          CentOS, writing and deliberately breaking a first program, building a small message-parsing
+          project across multiple files, and reading a header file as a table of contents — closing
+          with a plain-language glossary and command reference. Demonstrates the ability to teach a
+          technical skill from scratch, and makes the case for why a technical writer benefits from
+          reading source code rather than only being told about it.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/13-cpp-for-technical-writers.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/13-cpp-for-technical-writers.pdf" download>Download</a>
         </div>
       </article>
 
