@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ASD-STE100 — Ten Rules</title>
+<style>
+  :root{
+    --paper:#FBFAF7;
+    --ink:#16181D;
+    --rule:#D5D8DE;
+    --reject:#C0272D;
+    --approve:#1F4E79;
+    --muted:#6E7480;
+    --sans:ui-sans-serif,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono","Cascadia Mono",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:15px;line-height:1.55;
+    padding:0 20px 80px;
+  }
+  .wrap{max-width:880px;margin:0 auto}
+
+  /* ---------- masthead ---------- */
+  header{padding:44px 0 18px;border-bottom:2px solid var(--ink)}
+  .eyebrow{
+    font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 10px;
+  }
+  h1{
+    font-size:clamp(26px,5vw,38px);line-height:1.08;margin:0 0 8px;
+    font-weight:700;letter-spacing:-.015em;
+  }
+  h1 span{color:var(--muted);font-weight:400}
+  .standfirst{margin:0;max-width:52ch;color:var(--muted);font-size:14px}
+
+  /* ---------- checker ---------- */
+  .checker{
+    border:1px solid var(--rule);border-top:none;
+    background:#fff;padding:20px;margin-bottom:44px;
+  }
+  .checker h2{
+    font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+    margin:0 0 12px;color:var(--muted);font-weight:600;
+  }
+  textarea{
+    width:100%;min-height:74px;resize:vertical;
+    font-family:var(--mono);font-size:13.5px;line-height:1.5;
+    color:var(--ink);background:var(--paper);
+    border:1px solid var(--rule);padding:11px 12px;
+  }
+  textarea:focus{outline:2px solid var(--approve);outline-offset:1px}
+  .metrics{
+    display:flex;flex-wrap:wrap;gap:22px;
+    margin:14px 0 0;padding-top:12px;border-top:1px solid var(--rule);
+  }
+  .metric b{
+    display:block;font-family:var(--mono);font-size:19px;line-height:1;
+  }
+  .metric span{
+    font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  }
+  .metric.over b{color:var(--reject)}
+  #findings{margin:14px 0 0;padding:0;list-style:none}
+  #findings li{
+    font-size:13.5px;padding:7px 0 7px 13px;
+    border-left:3px solid var(--reject);margin-bottom:6px;
+  }
+  #findings li.clear{border-left-color:var(--approve);color:var(--approve)}
+  #findings code{
+    font-family:var(--mono);font-size:12.5px;
+    background:var(--paper);padding:1px 4px;
+  }
+  .disclaimer{font-size:11.5px;color:var(--muted);margin:14px 0 0}
+
+  /* ---------- controls ---------- */
+  .controls{display:flex;gap:10px;align-items:center;margin:0 0 26px}
+  button{
+    font-family:var(--sans);font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;font-weight:600;
+    background:none;color:var(--ink);
+    border:1px solid var(--ink);padding:8px 13px;cursor:pointer;
+  }
+  button:hover{background:var(--ink);color:var(--paper)}
+  button:focus-visible{outline:2px solid var(--approve);outline-offset:2px}
+
+  /* ---------- rules ---------- */
+  .rule{
+    display:grid;grid-template-columns:44px 1fr;gap:0 16px;
+    padding:24px 0;border-bottom:1px solid var(--rule);
+  }
+  .num{
+    font-family:var(--mono);font-size:13px;color:var(--muted);
+    padding-top:3px;
+  }
+  .rule h3{margin:0 0 4px;font-size:17px;font-weight:700;letter-spacing:-.01em}
+  .why{margin:0 0 14px;color:var(--muted);font-size:13.5px;max-width:56ch}
+
+  .spec{border-left:3px solid var(--rule);padding:0 0 0 12px;margin-bottom:9px}
+  .spec.no{border-left-color:var(--reject)}
+  .spec.yes{border-left-color:var(--approve)}
+  .stamp{
+    font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+    font-weight:700;display:block;margin-bottom:3px;
+  }
+  .spec.no .stamp{color:var(--reject)}
+  .spec.yes .stamp{color:var(--approve)}
+  .spec p{margin:0;font-family:var(--mono);font-size:13px;line-height:1.5}
+  .hidden .spec.yes p{
+    filter:blur(4.5px);user-select:none;
+  }
+  .hidden .spec.yes:hover p,
+  .hidden .spec.yes:focus-within p{filter:none}
+
+  footer{
+    margin-top:36px;padding-top:18px;border-top:2px solid var(--ink);
+    font-size:12px;color:var(--muted);
+  }
+  footer b{color:var(--ink)}
+
+  @media (max-width:560px){
+    .rule{grid-template-columns:1fr;gap:0}
+    .num{padding:0 0 4px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ---------- print: the actual cheat sheet ---------- */
+  @media print{
+    @page{size:Letter;margin:14mm}
+    body{background:#fff;font-size:9pt;padding:0}
+    .checker,.controls,.disclaimer{display:none}
+    header{padding-top:0}
+    h1{font-size:19pt}
+    .rule{
+      padding:9px 0;grid-template-columns:30px 1fr;
+      break-inside:avoid;page-break-inside:avoid;
+    }
+    .rule h3{font-size:11pt}
+    .why{font-size:8.5pt;margin-bottom:7px}
+    .spec p{font-size:8.5pt}
+    .hidden .spec.yes p{filter:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">ASD-STE100 · Simplified Technical English</p>
+  <h1>Ten rules that fix <span>most of it</span></h1>
+  <p class="standfirst">The specification runs to 65 writing rules. These ten
+    account for the overwhelming majority of findings in a real edit pass.
+    Every specimen below is drawn from maintenance-procedure prose.</p>
+</header>
+
+<section class="checker">
+  <h2>Check a sentence</h2>
+  <textarea id="input" spellcheck="false"
+    aria-label="Sentence to check against the ten rules"
+>Prior to commencing the servicing operation, the reservoir should be filled by the technician and the filter element must be inspected for contamination.</textarea>
+
+  <div class="metrics">
+    <div class="metric" id="m-words"><b>0</b><span>Words</span></div>
+    <div class="metric" id="m-sent"><b>0</b><span>Sentences</span></div>
+    <div class="metric" id="m-long"><b>0</b><span>Over 20 words</span></div>
+    <div class="metric" id="m-flags"><b>0</b><span>Findings</span></div>
+  </div>
+
+  <ul id="findings"></ul>
+
+  <p class="disclaimer">Heuristics, not a certified checker. It reads
+    patterns, not meaning — treat a finding as a prompt to look, not as a
+    verdict.</p>
+</section>
+
+<div class="controls">
+  <button id="toggle" aria-pressed="false">Hide the approved versions</button>
+  <button id="print">Print the sheet</button>
+</div>
+
+<main id="rules"></main>
+
+<footer>
+  <p><b>Nathan B. Smith, D.C.S.</b><br>
+  Principal Technical Writer<br>
+  nbsmith@outlook.com · (858) 221-3649</p>
+  <p>© 2026 Nathan B. Smith. All rights reserved. ASD-STE100 is issued by the
+  AeroSpace and Defence Industries Association of Europe. This sheet is an
+  independent study aid and is not the specification; where the two differ,
+  the specification governs.</p>
+</footer>
+
+</div>
+
+<script>
+/* ------------------------------------------------------------------ */
+/* the ten rules                                                       */
+/* ------------------------------------------------------------------ */
+const RULES = [
+  { n:1, t:"Use the active voice",
+    w:"Passive voice hides who does the work. In a procedure the actor is always the technician, and saying so removes a question the reader would otherwise have to answer.",
+    no:"The reservoir must be filled by the technician before the test is started.",
+    yes:"Fill the reservoir before you start the test." },
+
+  { n:2, t:"Use the imperative for instructions",
+    w:"\u201cShould\u201d and \u201cwill\u201d state a preference or a prediction. A step is an order. If the reader can decline it, it is not a step.",
+    no:"The access panel should be removed at this time.",
+    yes:"Remove the access panel." },
+
+  { n:3, t:"One instruction per sentence",
+    w:"A technician does one thing at a time and looks back at the page between actions. A sentence with three verbs loses its place the moment they look away.",
+    no:"Remove the eight fasteners and the panel, then examine the filter for contamination and replace it if necessary.",
+    yes:"Remove the eight fasteners.\nRemove the panel.\nExamine the filter for contamination." },
+
+  { n:4, t:"Keep sentences short \u2014 20 words in a procedure, 25 in description",
+    w:"The limit is not style. Comprehension of a procedural sentence falls off a cliff past about twenty words, and it falls fastest for a reader working in a second language.",
+    no:"If the pressure gage indicates a value above zero, the technician must not proceed with the removal of the fitting until the system has been fully depressurized. (34 words)",
+    yes:"Make sure that the pressure gage shows 0 bar. Do not loosen the fitting before this. (16 words)" },
+
+  { n:5, t:"One word, one meaning \u2014 and only approved words",
+    w:"Each approved word carries exactly one sense and one part of speech. \u201cCheck\u201d as a verb is not \u201ccheck\u201d as a noun; the dictionary permits one of them and you must know which.",
+    no:"Prior to commencing the operation, ensure the unit is de-energized and utilize the approved test equipment.",
+    yes:"Before you start the work, make sure that the unit has no power. Use the approved test equipment." },
+
+  { n:6, t:"Use the same word for the same thing, every time",
+    w:"Elegant variation is a virtue in prose and a defect in procedures. Three names for one part means the reader must decide whether they are three parts.",
+    no:"Remove the access panel \u2026 Install the access cover \u2026 Torque the plate to 5.1 N.m.",
+    yes:"Remove the access panel \u2026 Install the access panel \u2026 Tighten the access panel fasteners to 5.1 N.m." },
+
+  { n:7, t:"Keep the articles",
+    w:"Telegraphic style saves two characters and costs clarity. \u201cRemove panel from housing\u201d leaves open whether there is one panel or several, and which housing.",
+    no:"Remove panel from housing and disconnect cable.",
+    yes:"Remove the panel from the housing. Disconnect the cable." },
+
+  { n:8, t:"Avoid \u2011ing forms",
+    w:"An \u2011ing word can be a verb, a noun, or an adjective, and the reader has to work out which. Rewrite with a plain verb or a relative clause.",
+    no:"Before removing the filter, make sure that the pressure is 0 bar.",
+    yes:"Before you remove the filter, make sure that the pressure is 0 bar." },
+
+  { n:9, t:"Limit noun clusters to three words",
+    w:"English lets you stack nouns indefinitely and gives the reader no clue how they group. Four deep is ambiguous; five is a puzzle. Break it apart with prepositions.",
+    no:"hydraulic reservoir filter element retention ring torque value",
+    yes:"the torque value for the retention ring of the filter element in the hydraulic reservoir" },
+
+  { n:10, t:"Write warnings and cautions as short commands \u2014 before the step",
+    w:"A hazard statement placed after the action it governs gives no protection at all: the reader meets it having already done the thing. And a risk to a person is a WARNING, never a NOTE.",
+    no:"Remove the fitting.\nNOTE: Hydraulic fluid under pressure can penetrate the skin and cause serious injury. Personnel should exercise caution.",
+    yes:"WARNING: Hydraulic fluid can go through the skin. An injection injury can cause the loss of a limb. Make sure that the pressure is 0 bar before you loosen a fitting.\nRemove the fitting." }
+];
+
+const main = document.getElementById("rules");
+main.innerHTML = RULES.map(r => `
+  <article class="rule">
+    <div class="num">${String(r.n).padStart(2,"0")}</div>
+    <div>
+      <h3>${r.t}</h3>
+      <p class="why">${r.w}</p>
+      <div class="spec no">
+        <span class="stamp">Not approved</span>
+        <p>${r.no.replace(/\n/g,"<br>")}</p>
+      </div>
+      <div class="spec yes" tabindex="0">
+        <span class="stamp">Approved</span>
+        <p>${r.yes.replace(/\n/g,"<br>")}</p>
+      </div>
+    </div>
+  </article>`).join("");
+
+/* ------------------------------------------------------------------ */
+/* quiz toggle + print                                                 */
+/* ------------------------------------------------------------------ */
+const toggle = document.getElementById("toggle");
+toggle.addEventListener("click", () => {
+  const on = main.classList.toggle("hidden");
+  toggle.textContent = on ? "Show the approved versions" : "Hide the approved versions";
+  toggle.setAttribute("aria-pressed", String(on));
+});
+document.getElementById("print").addEventListener("click", () => window.print());
+
+/* ------------------------------------------------------------------ */
+/* the checker                                                         */
+/* ------------------------------------------------------------------ */
+const NOT_APPROVED = {
+  "utilize":"use", "utilise":"use", "commence":"start", "commencing":"start",
+  "prior to":"before", "in order to":"to", "ensure":"make sure",
+  "perform":"do", "obtain":"get", "terminate":"stop", "initiate":"start",
+  "sufficient":"enough", "accomplish":"do", "facilitate":"help",
+  "assist":"help", "subsequent to":"after", "in the event that":"if",
+  "at this time":"now", "de-energized":"has no power", "verify":"make sure",
+  "indicate":"show", "adjacent to":"near", "same":"the part named"
+};
+const ING_OK = new Set(["during","string","ring","spring","bearing","housing",
+  "wiring","tubing","coupling","fitting","bushing","casing","packing","o-ring",
+  "everything","nothing","something","warning","engineering","training"]);
+const STOP = new Set(["the","a","an","and","or","of","to","in","on","at","for",
+  "with","from","by","is","are","was","were","be","been","that","this","if",
+  "not","do","does","make","sure","you","it","its","must","can","when","then",
+  "before","after","until","above","below","into","out","up","down","no"]);
+
+const input = document.getElementById("input");
+const findings = document.getElementById("findings");
+
+function sentencesOf(text){
+  return text.split(/(?<=[.!?])\s+|\n+/).map(s=>s.trim()).filter(Boolean);
+}
+function wordsOf(s){
+  return s.split(/\s+/).map(w=>w.replace(/^[^\w-]+|[^\w-]+$/g,"")).filter(Boolean);
+}
+
+function check(){
+  const text = input.value;
+  const sents = sentencesOf(text);
+  const allWords = wordsOf(text);
+  const out = [];
+
+  // 4 — length
+  const longOnes = sents.filter(s => wordsOf(s).length > 20);
+  longOnes.forEach(s => {
+    out.push(`<b>Rule 4.</b> ${wordsOf(s).length} words. Procedural sentences stop at 20. <code>${s.slice(0,58)}${s.length>58?"\u2026":""}</code>`);
+  });
+
+  // 1 — passive
+  const passive = text.match(/\b(is|are|was|were|be|been|being)\s+(?:\w+ly\s+)?(\w+(?:ed|en))\b/gi) || [];
+  passive.forEach(m => out.push(`<b>Rule 1.</b> Looks passive: <code>${m}</code> — name the actor and use an imperative.`));
+
+  // 2 — hedged instruction
+  const hedge = text.match(/\b(should|shall|will|may|is to be|are to be)\b/gi) || [];
+  hedge.forEach(m => out.push(`<b>Rule 2.</b> <code>${m}</code> states a preference. A step is an order — use the imperative.`));
+
+  // 3 — compound instruction
+  sents.forEach(s => {
+    if (/\band then\b/i.test(s) || (s.match(/\band\b/gi)||[]).length >= 2) {
+      out.push(`<b>Rule 3.</b> More than one action in one sentence. Split it.`);
+    }
+  });
+
+  // 5 — not-approved words
+  const lower = " " + text.toLowerCase() + " ";
+  Object.keys(NOT_APPROVED).forEach(bad => {
+    const re = new RegExp("\\b" + bad.replace(/[-/\\^$*+?.()|[\]{}]/g,"\\$&") + "\\b","i");
+    if (re.test(lower)) {
+      out.push(`<b>Rule 5.</b> <code>${bad}</code> is not approved — use <code>${NOT_APPROVED[bad]}</code>.`);
+    }
+  });
+
+  // 7 — dropped articles (verb immediately followed by a bare noun)
+  const bare = text.match(/\b(remove|install|open|close|disconnect|connect|examine|clean|tighten|loosen)\s+(?!the\b|a\b|an\b|all\b|each\b|both\b|it\b|them\b)([a-z]{3,})/gi) || [];
+  bare.forEach(m => out.push(`<b>Rule 7.</b> Article may be missing: <code>${m}</code>.`));
+
+  // 8 — -ing forms
+  const ings = allWords.filter(w => /ing$/i.test(w) && !ING_OK.has(w.toLowerCase()) && w.length > 4);
+  [...new Set(ings)].forEach(w => out.push(`<b>Rule 8.</b> <code>${w}</code> — rewrite with a plain verb.`));
+
+  // 9 — noun clusters
+  const seq = allWords.map(w => w.toLowerCase());
+  let run = [];
+  seq.forEach(w => {
+    if (!STOP.has(w) && /^[a-z-]+$/.test(w)) { run.push(w); }
+    else { if (run.length >= 4) out.push(`<b>Rule 9.</b> ${run.length}-word noun cluster: <code>${run.join(" ")}</code>.`); run = []; }
+  });
+  if (run.length >= 4) out.push(`<b>Rule 9.</b> ${run.length}-word noun cluster: <code>${run.join(" ")}</code>.`);
+
+  // metrics
+  document.querySelector("#m-words b").textContent = allWords.length;
+  document.querySelector("#m-sent b").textContent  = sents.length;
+  document.querySelector("#m-long b").textContent  = longOnes.length;
+  document.querySelector("#m-flags b").textContent = out.length;
+  document.getElementById("m-long").classList.toggle("over", longOnes.length > 0);
+  document.getElementById("m-flags").classList.toggle("over", out.length > 0);
+
+  findings.innerHTML = out.length
+    ? out.map(f => `<li>${f}</li>`).join("")
+    : (allWords.length
+        ? `<li class="clear">Nothing flagged. The heuristics found no pattern — read it once more yourself.</li>`
+        : "");
+}
+
+input.addEventListener("input", check);
+check();
+</script>
+</body>
+</html>

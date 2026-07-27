@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Passive to Active — One Page</title>
+<style>
+  :root{
+    --paper:#FBFAF7; --ink:#16181D; --rule:#D5D8DE;
+    --reject:#C0272D; --approve:#1F4E79; --muted:#6E7480;
+    --actor:#1F4E79; --target:#8A6D1F;
+    --sans:ui-sans-serif,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono","Cascadia Mono",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:12px;line-height:1.42;
+    padding:18px;
+  }
+  .sheet{max-width:860px;margin:0 auto}
+
+  header{border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:12px}
+  .eyebrow{font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 4px}
+  h1{font-size:25px;line-height:1.05;margin:0 0 5px;letter-spacing:-.015em}
+  .thesis{margin:0;color:var(--muted);font-size:12px;max-width:82ch}
+
+  h2{
+    font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--approve);margin:0 0 6px;font-weight:700;
+  }
+  section{margin-bottom:12px}
+
+  /* ---- spotting ---- */
+  .spot{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .card{border-left:2.5px solid var(--rule);padding-left:9px}
+  .card b{display:block;font-size:12.5px;margin-bottom:2px}
+  .card p{margin:0;font-size:11px;color:var(--muted);line-height:1.4}
+  .card code{font-family:var(--mono);font-size:10.5px;color:var(--ink)}
+
+  /* ---- rotation ---- */
+  .rot{border:1px solid var(--rule);background:#fff;padding:10px 12px 6px}
+  .rot svg{display:block;width:100%;height:auto}
+  .legend{font-size:10px;color:var(--muted);margin:2px 0 0;text-align:center}
+
+  /* ---- moves ---- */
+  .moves{display:grid;grid-template-columns:1fr 1fr;gap:9px 18px}
+  .mv{display:grid;grid-template-columns:15px 1fr;gap:7px}
+  .mv .n{font-family:var(--mono);font-size:11px;color:var(--approve);font-weight:700}
+  .mv b{font-size:12px;display:block;margin-bottom:1px}
+  .mv p{margin:0 0 3px;font-size:10.5px;color:var(--muted);line-height:1.38}
+  .ex{font-family:var(--mono);font-size:10px;line-height:1.45}
+  .ex .x{color:var(--reject)}
+  .ex .y{color:var(--approve)}
+
+  /* ---- leave alone ---- */
+  .leave{display:grid;grid-template-columns:2.1fr 1fr;gap:18px;
+    border-top:1px solid var(--rule);padding-top:9px}
+  .leave ul{margin:0;padding-left:14px}
+  .leave li{font-size:11px;margin-bottom:2px;color:var(--muted)}
+  .leave li b{color:var(--ink)}
+  .kicker{font-size:11px;line-height:1.45;font-style:italic;color:var(--ink);
+    border-left:2.5px solid var(--approve);padding-left:9px;margin:0}
+
+  footer{
+    margin-top:10px;padding-top:7px;border-top:2px solid var(--ink);
+    display:flex;justify-content:space-between;gap:16px;
+    font-size:9px;color:var(--muted);line-height:1.4;
+  }
+  footer b{color:var(--ink);font-size:10px}
+
+  @media (max-width:700px){
+    .spot,.moves,.leave{grid-template-columns:1fr}
+  }
+  @media print{
+    @page{size:Letter;margin:10mm}
+    body{background:#fff;padding:0;font-size:8.5pt;line-height:1.34}
+    .sheet{max-width:none}
+    h1{font-size:17.5pt;margin-bottom:3px}
+    .thesis{font-size:8.6pt}
+    header{padding-bottom:5px;margin-bottom:8px}
+    section{margin-bottom:8px}
+    h2{margin-bottom:4px}
+    .card p{font-size:7.9pt;line-height:1.33}
+    .card b{font-size:9pt}
+    .rot{padding:6px 8px 3px}
+    .legend{font-size:7.4pt}
+    .moves{gap:6px 15px}
+    .mv b{font-size:8.7pt}
+    .mv p{font-size:7.6pt;line-height:1.3;margin-bottom:2px}
+    .ex{font-size:7.3pt;line-height:1.36}
+    .leave{padding-top:6px;gap:14px}
+    .leave li{font-size:7.9pt;margin-bottom:1px}
+    .kicker{font-size:8pt;line-height:1.36}
+    footer{margin-top:6px;padding-top:4px;font-size:7pt}
+    footer b{font-size:7.6pt}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<header>
+  <p class="eyebrow">Editing cheat sheet · one page</p>
+  <h1>Turning passive into active</h1>
+  <p class="thesis">In ordinary prose, passive voice is a matter of taste. In
+    a procedure it decides whether the reader acts or waits. Take <i>the
+    service is restarted after the configuration is changed</i> — does the
+    technician restart it, or does the installer do it for them? One reading
+    gets the job done. The other leaves somebody watching a terminal for
+    something that is never going to happen on its own. Every unnamed actor
+    is a decision you have quietly handed to a reader who knows less about
+    the system than you do.</p>
+</header>
+
+<section>
+  <h2>Three ways to catch one</h2>
+  <div class="spot">
+    <div class="card">
+      <b>Add “by zombies”</b>
+      <p>If you can drop it in after the verb and the sentence still works,
+        it is passive. <code>The file was deleted <i>by zombies</i>.</code>
+        Silly, instant, never wrong.</p>
+    </div>
+    <div class="card">
+      <b>Look for a to-be verb with an -ed word behind it</b>
+      <p><code>is · are · was · were · be · been · being</code> followed by
+        <code>modified · sent · required · configured</code>. Grep for it.
+        That pattern is the whole tell.</p>
+    </div>
+    <div class="card">
+      <b>Ask who is holding the wrench</b>
+      <p>Read the sentence and try to picture somebody doing the work. If no
+        one shows up, the sentence is hiding them — and you have found
+        something more interesting than a style problem.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>The rotation — the only move you really need</h2>
+  <div class="rot">
+    <svg viewBox="0 0 780 132" xmlns="http://www.w3.org/2000/svg" role="img"
+      aria-label="Diagram showing a passive sentence rotating into an active one: the actor moves from the end of the sentence to the front, and the target moves from the front to the end.">
+      <defs>
+        <marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="2.8"
+          orient="auto" markerUnits="strokeWidth">
+          <path d="M0,0 L0,5.6 L7,2.8 z" fill="#6E7480"/>
+        </marker>
+      </defs>
+
+      <text x="0" y="12" font-family="Helvetica,Arial" font-size="9"
+        letter-spacing="1.6" fill="#C0272D">PASSIVE</text>
+      <text x="0" y="36" font-family="Menlo,monospace" font-size="14.5" fill="#16181D">
+        <tspan fill="#8A6D1F">The configuration file</tspan><tspan fill="#16181D"> was modified </tspan><tspan fill="#6E7480">by</tspan><tspan fill="#1F4E79"> the installer</tspan><tspan fill="#16181D">.</tspan>
+      </text>
+      <text x="0" y="50" font-family="Helvetica,Arial" font-size="8.5" fill="#8A6D1F">target</text>
+      <text x="196" y="50" font-family="Helvetica,Arial" font-size="8.5" fill="#6E7480">action, wearing a to-be verb</text>
+      <text x="404" y="50" font-family="Helvetica,Arial" font-size="8.5" fill="#1F4E79">actor, parked at the back</text>
+
+      <path d="M430,58 C430,80 120,74 74,92" fill="none" stroke="#6E7480"
+        stroke-width="1.2" marker-end="url(#ar)"/>
+      <path d="M62,58 C40,84 430,80 470,92" fill="none" stroke="#6E7480"
+        stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#ar)"/>
+
+      <text x="0" y="116" font-family="Helvetica,Arial" font-size="9"
+        letter-spacing="1.6" fill="#1F4E79">ACTIVE</text>
+      <text x="66" y="118" font-family="Menlo,monospace" font-size="14.5" fill="#16181D">
+        <tspan fill="#1F4E79">The installer</tspan><tspan fill="#16181D"> modifies </tspan><tspan fill="#8A6D1F">the configuration file</tspan><tspan fill="#16181D">.</tspan>
+      </text>
+    </svg>
+    <p class="legend">Swap the ends. Drop the “by”. Strip the to-be verb off
+      the front of the action. Three mechanical operations — no judgement
+      required.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Five moves for when the rotation will not go</h2>
+  <div class="moves">
+
+    <div class="mv"><span class="n">1</span><div>
+      <b>No actor anywhere? Then you have found a real gap.</b>
+      <p>The sentence is not vague because of grammar. It is vague because
+        nobody knows who does this. Go ask. That question is worth more than
+        the edit.</p>
+      <p class="ex"><span class="x">✗ The certificate is rotated every 90 days.</span><br>
+        <span class="y">✓ The provisioning service rotates the certificate every 90 days.</span></p>
+    </div></div>
+
+    <div class="mv"><span class="n">2</span><div>
+      <b>In a procedure, the actor is the reader — so delete them.</b>
+      <p>You do not need a subject at all. The imperative already has one and
+        it is the person holding the page.</p>
+      <p class="ex"><span class="x">✗ The service must be restarted by the administrator.</span><br>
+        <span class="y">✓ Restart the service.</span></p>
+    </div></div>
+
+    <div class="mv"><span class="n">3</span><div>
+      <b>Dig the verb out of the noun first.</b>
+      <p>Passive loves company. Half the time the real verb has been mashed
+        into a noun and propped up by a weak one. Free the verb and the
+        passive often falls off by itself.</p>
+      <p class="ex"><span class="x">✗ An inspection of the log is performed by the operator.</span><br>
+        <span class="y">✓ The operator inspects the log.</span></p>
+    </div></div>
+
+    <div class="mv"><span class="n">4</span><div>
+      <b>If the actor is a system, say so — that is not jargon.</b>
+      <p>Writers go passive to avoid naming a machine as the doer, as though
+        it were impolite. Machines do things. Let them.</p>
+      <p class="ex"><span class="x">✗ The request is rejected if the token has expired.</span><br>
+        <span class="y">✓ The gateway rejects the request if the token has expired.</span></p>
+    </div></div>
+
+    <div class="mv"><span class="n">5</span><div>
+      <b>Rebuild the whole sentence rather than fight it.</b>
+      <p>Some sentences are so tangled that rotating them makes a worse
+        sentence. Do not negotiate. Work out what it is trying to say, look
+        away from the page, and say that.</p>
+      <p class="ex"><span class="x">✗ It was determined that a reboot would be required following the changes that had been made.</span><br>
+        <span class="y">✓ Reboot the server after you change the settings.</span></p>
+    </div></div>
+
+  </div>
+</section>
+
+<div class="leave">
+  <div>
+    <h2>Leave it alone when</h2>
+    <ul>
+      <li><b>Nobody knows who did it.</b> <i>The record was deleted in
+        March.</i> If that is genuinely all you know, saying it plainly beats
+        inventing a culprit.</li>
+      <li><b>The actor does not matter.</b> <i>The port is reserved for
+        diagnostics.</i> Reserved by whom? Nobody cares, and the sentence is
+        about the port.</li>
+      <li><b>The thing acted upon is the subject of the paragraph.</b> Keep
+        it in the subject slot so the paragraph does not lurch.</li>
+      <li><b>You are being deliberately careful.</b> Incident reports and
+        legal writing sometimes need to state what happened without asserting
+        who caused it. That is a decision, not an accident.</li>
+    </ul>
+  </div>
+  <div>
+    <h2>The point</h2>
+    <p class="kicker">A rule you follow because someone told you to is a
+      rule you will apply in the wrong place. Chase the actor, not the
+      construction — and when you cannot find one, you have not found a
+      grammar problem. You have found something nobody knows yet, and that is
+      the most useful thing you will discover all day.</p>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <b>Nathan B. Smith, D.C.S.</b><br>
+    Principal Technical Writer<br>
+    nbsmith@outlook.com · (858) 221-3649
+  </div>
+  <div style="text-align:right">
+    © 2026 Nathan B. Smith. All rights reserved.<br>
+    No part of this document may be reproduced or distributed<br>
+    in any form without the written permission of the author.
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
