@@ -253,7 +253,7 @@
 
 <header class="titleblock">
   <div class="tb-inner">
-    <div class="tb-eyebrow">DOC-NBS-PORTFOLIO-001 · Issue 1 · 2026-07-07</div>
+    <div class="tb-eyebrow">DOC-NBS-PORTFOLIO-001 · Issue 2 · 2026-08-17</div>
     <h1 class="tb-title">Nathan B. Smith</h1>
     <p class="tb-sub">Senior Principal Technical Writer &amp; Systems Engineer — S1000D / MIL-STD / IETM Documentation for Defense &amp; Aerospace Programs</p>
     <table class="tb-fields">
@@ -291,7 +291,9 @@
       <h2 id="about-h">General Information</h2>
     </div>
     <p class="lede">
-      This repository collects representative technical writing samples across four skill areas: structured
+      This repository collects representative technical writing samples across six skill areas: secure
+      network systems (RMF/NIST security documentation for a deployable platform), curriculum development
+      and systems engineering (a full NAVEDTRA-conformant instructional design document chain), structured
       authoring (S1000D IETMs, DITA topic sets), standards compliance (DID/CDRL and CUI-aware documentation
       practice), editing craft (Simplified Technical English and plain-language reference tools), and systems
       &amp; process thinking (documentation change control, governance workflows, and engineering literacy) —
@@ -343,9 +345,316 @@
     </div>
   </section>
 
-  <section aria-labelledby="structured-h" style="margin-top:2.4rem;">
+  <section aria-labelledby="sns-h" style="margin-top:2.4rem;">
     <div class="section-head">
       <span class="section-num">02</span>
+      <h2 id="sns-h">Secure Network Systems (SNS)</h2>
+    </div>
+    <p class="lede" style="margin-bottom:1.2rem;">
+      Network security and cybersecurity authorization documentation — writing the package that tells
+      an Authorizing Official what a system is, what risks it carries, and what has been done about them.
+    </p>
+
+    <div class="sample-list">
+
+      <article class="card" style="border-left-color:var(--green);">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-14 · ECN-100 · SSPP · DoD RMF / DoDI 8510.01</div>
+            <h3 class="card-title">System Security and Privacy Plan — Expeditionary Command Node (ECN-100)</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">NIST SP 800-53</span>
+          <span class="tag">CNSSI 1253</span>
+          <span class="tag">DDIL Operations</span>
+          <span class="tag">SVG Diagrams</span>
+        </div>
+        <p class="card-desc">
+          A complete 15-page SSPP for a fictional trailer-mounted mobile C2 platform carrying SIPRNET and
+          NIPRNET enclaves over a shared SATCOM uplink: security categorization, a mobile authorization
+          boundary, interconnections and ISAs, control implementation by 800-53 family with
+          mobile-platform-specific notes, POA&amp;M, PPS registration, and a full hardware/software baseline.
+          Appendix D contains five hand-authored monochrome SVG diagrams (network architecture, physical
+          layout, topology, data flow, and an incident-response swimlane) built to Visio-stencil conventions.
+          Demonstrates RMF authorization-package writing for a disconnected/intermittent/limited-bandwidth
+          (DDIL) environment rather than a fixed facility.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/14-ecn100-sspp.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/14-ecn100-sspp.pdf" download>Download</a>
+          <a class="btn btn-ghost" href="samples/14-ecn100-diagrams-svg.zip" download>Download SVG Diagrams (.zip)</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section aria-labelledby="curriculum-h" style="margin-top:2.4rem;">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 id="curriculum-h">Curriculum Development &amp; Systems Engineering</h2>
+    </div>
+    <p class="lede" style="margin-bottom:1.2rem;">
+      A complete Navy Training Process (NAVEDTRA M-142 series) document chain for a single course —
+      <em>Linux Administration from the Command Line</em>, built for operators of the same fictional
+      ECN-100 platform documented in the SSPP above. Each document consumes the outputs of the ones
+      before it, from trigger identification through analysis, design, and content development, so the
+      set reads as one continuous case file rather than isolated templates. Open items (CCA assignment,
+      lab-environment sourcing) are deliberately carried forward document to document, the way a real
+      program tracks unresolved risk.
+    </p>
+
+    <div class="sample-list">
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-15 · NTP Phase I, Step 1B · NAVEDTRA M-142.1 · 17 Aug 2026</div>
+            <h3 class="card-title">Alignment Brief</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">NAVEDTRA M-142.1</span>
+          <span class="tag">Requirements Trigger</span>
+          <span class="tag">Risk Identification</span>
+        </div>
+        <p class="card-desc">
+          The chain's opening document — what convenes the stakeholders and frames the problem. Documents
+          the training trigger (a Principle-type troubleshooting gap beneath the platform's Procedure-type
+          PQS tasks), stakeholder roles, assumptions and constraints, a risk/mitigation table, GFI
+          received and needed, and the trigger-decision block.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/15-alignment-brief-linux-cli-ecn100.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/15-alignment-brief-linux-cli-ecn100.pdf" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-16 · NTP Phase II, Steps 3A/3B/3C · NAVEDTRA M-142.2 · 23 Sep 2026</div>
+            <h3 class="card-title">Front End Analysis (FEA) Report</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">Training Situation Analysis</span>
+          <span class="tag">Six-M's RCA</span>
+          <span class="tag">Train / No-Train</span>
+        </div>
+        <p class="card-desc">
+          The "is training even the right fix?" document. A six-M's root-cause screen isolates the
+          deficiency to a genuine skill gap rather than a process or equipment problem, a Reuse/Repurpose/
+          Reference assessment rules out existing content, and a preliminary duty/task structure is staged
+          for SME validation — ending in a documented Train recommendation.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/16-fea-report-linux-cli-ecn100.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/16-fea-report-linux-cli-ecn100.pdf" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-17 · NTP Phase II, Step 4A · NAVEDTRA M-142.2 · 14 Oct 2026</div>
+            <h3 class="card-title">Curriculum Outline of Instruction (COI)</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">Learning Objectives</span>
+          <span class="tag">KPL / SPL Taxonomy</span>
+          <span class="tag">19 Enabling Objectives</span>
+        </div>
+        <p class="card-desc">
+          The course's skeleton — every objective, fully stated. Five modules, nine lessons, and nineteen
+          Enabling Objectives, each written as a complete condition/behavior/standard statement with its
+          cognitive (KPL) or psychomotor (SPL) proficiency tag, plus course flow logic and an assessment
+          strategy matching test method to proficiency level.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/17-coi-linux-cli-ecn100.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/17-coi-linux-cli-ecn100.pdf" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-18 · NTP Phase II, Steps 3C/4A · DI-SESS-81518 · 28 Oct 2026</div>
+            <h3 class="card-title">Instructional Performance Requirements Document (IPRD v2)</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">Validated TTL</span>
+          <span class="tag">Learning Analysis</span>
+          <span class="tag">Sensory / Fidelity Data</span>
+        </div>
+        <p class="card-desc">
+          The bridge from tasks to media. Carries the SME-validated Training Task List and a 19-row
+          per-objective analysis of sensory, fidelity, and media characteristics — the data showing that
+          79% of objectives need interactive or hands-on treatment, which turns the lab environment from
+          a nice-to-have into the course's confirmed cost driver.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/18-iprd-v2-linux-cli-ecn100.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/18-iprd-v2-linux-cli-ecn100.pdf" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-19 · NTP Phase II, Step 5A · DI-SESS-81519C · 12 Nov 2026</div>
+            <h3 class="card-title">Instructional Media Requirements Document (IMRD)</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">Media Selection</span>
+          <span class="tag">Lab Functional Requirements</span>
+          <span class="tag">Build vs. Procure</span>
+        </div>
+        <p class="card-desc">
+          The media-selection decision document. Collapses the nineteen objectives into four media
+          categories (static IMI, terminal simulation, hands-on lab, capstone practical), specifies
+          functional requirements for the virtual lab environment, and frames the build-vs-procure
+          sourcing decision for the Resource Sponsor rather than resolving it unilaterally.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/19-imrd-linux-cli-ecn100.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/19-imrd-linux-cli-ecn100.pdf" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-20 · NTP Phase II, Step 5A/5B · NAVEDTRA M-142.2 §7.2 · 3 Dec 2026</div>
+            <h3 class="card-title">Draft Training Course Control Document (TCCD)</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">Course Data Page</span>
+          <span class="tag">Phase II Output</span>
+          <span class="tag">Draft CMS / RRL</span>
+        </div>
+        <p class="card-desc">
+          The course's governing control document in draft — the single package a Curriculum Control
+          Authority would approve. Rolls up the course data page, mission statement, summary curriculum
+          outline, a draft 11-event Course Master Schedule, and a draft resource summary, with the
+          Phase II open items honestly carried forward rather than papered over.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/20-draft-tccd-linux-cli-ecn100.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/20-draft-tccd-linux-cli-ecn100.pdf" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-21 · TCCD Component · NAVEDTRA M-142.3 §2.1.1 · 10 Dec 2026</div>
+            <h3 class="card-title">Draft Course Master Schedule (CMS)</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">Event Sequencing</span>
+          <span class="tag">SDIT Convening Model</span>
+          <span class="tag">390-Minute Schedule</span>
+        </div>
+        <p class="card-desc">
+          The standalone, expanded schedule — eleven training events mapped to Enabling Objectives,
+          delivery method, per-event testing method, and running cumulative time. Adapts the traditional
+          cohort-based CMS convening model to a continuous-enrollment, self-paced (SDIT) course, and
+          states which figures are estimates pending Phase III timing validation.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/21-draft-cms-linux-cli-ecn100.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/21-draft-cms-linux-cli-ecn100.pdf" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-22 · TCCD Component · NAVEDTRA M-142.2 §7.1.2.g · 17 Dec 2026</div>
+            <h3 class="card-title">Draft Resource Requirements List (RRL)</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">Manpower Estimates</span>
+          <span class="tag">TLCE Input</span>
+          <span class="tag">Sustainment Planning</span>
+        </div>
+        <p class="card-desc">
+          What the course costs to build and keep running. Development manpower by role and media
+          category (~390 hours, plus 120–200 more if the lab is built in-house), sustainment effort,
+          funding status, and a side-by-side build-vs-procure manpower/funding comparison staged for the
+          Resource Sponsor's decision and the Total Lifecycle Cost Estimate.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/22-draft-rrl-linux-cli-ecn100.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/22-draft-rrl-linux-cli-ecn100.pdf" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-23 · NTP Phase III, Step 6 · DI-SESS-81520B · 14 Jan 2027</div>
+            <h3 class="card-title">Instructional Media Design Package (IMDP)</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">NAVEDTRA M-142.3</span>
+          <span class="tag">PALS Learning Science</span>
+          <span class="tag">SCORM Rollup</span>
+        </div>
+        <p class="card-desc">
+          The master design plan that drives storyboard and prototype development. Documents the
+          performance-based design strategy, the five Practical Applications of Learning Science
+          practices (retrieval practice, spacing, interleaving, concrete examples, elaboration),
+          per-category presentation/interactivity/remediation strategies, and SCORM rollup behavior —
+          with the not-yet-developed UI section marked as such instead of faked.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/23-imdp-linux-cli-ecn100.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/23-imdp-linux-cli-ecn100.pdf" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-24 · NTP Phase III, Step 7 · NAVEDTRA M-142.3 §6.2 · 25 Feb 2027</div>
+            <h3 class="card-title">Instructor / Facilitator Guide (Draft)</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">SDIT Facilitation</span>
+          <span class="tag">Escalation Procedures</span>
+          <span class="tag">Deliberate Scoping</span>
+        </div>
+        <p class="card-desc">
+          An instructor guide for a course with no instructor — deliberately re-scoped for 100%
+          self-directed delivery. Instead of a lesson script, it documents the proctor/Learning Center
+          support role: enrollment and monitoring, module-by-module administrative notes, remediation
+          and lab-environment escalation tables, and a student FAQ — with the scoping rationale stated
+          up front so the missing delivery script reads as a design decision, not an omission.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/24-instructor-guide-linux-cli-ecn100.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/24-instructor-guide-linux-cli-ecn100.pdf" download>Download</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section aria-labelledby="structured-h" style="margin-top:2.4rem;">
+    <div class="section-head">
+      <span class="section-num">04</span>
       <h2 id="structured-h">Structured Authoring</h2>
     </div>
     <p class="lede" style="margin-bottom:1.2rem;">
@@ -482,7 +791,7 @@
 
   <section aria-labelledby="standards-h" style="margin-top:2.4rem;">
     <div class="section-head">
-      <span class="section-num">03</span>
+      <span class="section-num">05</span>
       <h2 id="standards-h">Standards Compliance</h2>
     </div>
     <p class="lede" style="margin-bottom:1.2rem;">
@@ -522,7 +831,7 @@
 
   <section aria-labelledby="editing-h" style="margin-top:2.4rem;">
     <div class="section-head">
-      <span class="section-num">04</span>
+      <span class="section-num">06</span>
       <h2 id="editing-h">Editing Craft</h2>
     </div>
     <p class="lede" style="margin-bottom:1.2rem;">
@@ -636,7 +945,7 @@
 
   <section aria-labelledby="systems-h" style="margin-top:2.4rem;">
     <div class="section-head">
-      <span class="section-num">05</span>
+      <span class="section-num">07</span>
       <h2 id="systems-h">Systems &amp; Process Thinking</h2>
     </div>
     <p class="lede" style="margin-bottom:1.2rem;">
