@@ -253,7 +253,7 @@
 
 <header class="titleblock">
   <div class="tb-inner">
-    <div class="tb-eyebrow">DOC-NBS-PORTFOLIO-001 · Issue 2 · 2026-08-17</div>
+    <div class="tb-eyebrow">DOC-NBS-PORTFOLIO-001 · Issue 3 · 2026-08-17</div>
     <h1 class="tb-title">Nathan B. Smith</h1>
     <p class="tb-sub">Senior Principal Technical Writer &amp; Systems Engineer — S1000D / MIL-STD / IETM Documentation for Defense &amp; Aerospace Programs</p>
     <table class="tb-fields">
@@ -351,8 +351,10 @@
       <h2 id="sns-h">Secure Network Systems (SNS)</h2>
     </div>
     <p class="lede" style="margin-bottom:1.2rem;">
-      Network security and cybersecurity authorization documentation — writing the package that tells
-      an Authorizing Official what a system is, what risks it carries, and what has been done about them.
+      Network security and cybersecurity documentation on both sides of the compliance line — the
+      DoD RMF authorization package that tells an Authorizing Official what a system is and what has
+      been done about its risks, and the contractor-side NIST SP 800-171 package that tells a CMMC
+      assessor how CUI is protected.
     </p>
 
     <div class="sample-list">
@@ -384,6 +386,61 @@
           <a class="btn btn-primary" href="samples/14-ecn100-sspp.pdf" target="_blank" rel="noopener">View PDF</a>
           <a class="btn btn-ghost" href="samples/14-ecn100-sspp.pdf" download>Download</a>
           <a class="btn btn-ghost" href="samples/14-ecn100-diagrams-svg.zip" download>Download SVG Diagrams (.zip)</a>
+        </div>
+      </article>
+
+      <article class="card" style="border-left-color:var(--green);">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-26 · VSG-100 · SSP · NIST SP 800-171 / DFARS 252.204-7012</div>
+            <h3 class="card-title">System Security Plan — VSG-100 Secure Network Gateway (NIST SP 800-171)</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">NIST SP 800-171</span>
+          <span class="tag">CMMC</span>
+          <span class="tag">DITA</span>
+          <span class="tag">POA&amp;M</span>
+        </div>
+        <p class="card-desc">
+          The contractor-side counterpart to the RMF SSPP above: a DITA-authored System Security Plan for
+          a fictional tactical network gateway handling CUI in transit. Defines the system boundary and
+          CUI enclave (with boundary and front-panel diagrams), maps Access Control and System &amp;
+          Communications Protection requirements to executable task-topic procedures citing the specific
+          controls each step implements (AC.L2-3.1.1, SC.L2-3.13.8, etc.), and closes with a control
+          implementation status table that documents one control honestly as a POA&amp;M gap rather than
+          claiming full implementation.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/26-vsg100-ssp-nist800171.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/26-vsg100-ssp-nist800171.pdf" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card" style="border-left-color:var(--green);">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-27 · VSG-100 · Installation Guide · DITA Task/Reference</div>
+            <h3 class="card-title">VSG-100 Secure Network Gateway — Installation Guide</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">DITA Task Topics</span>
+          <span class="tag">Hardware Installation</span>
+          <span class="tag">Warnings / Cautions</span>
+        </div>
+        <p class="card-desc">
+          Companion hardware guide to the VSG-100 SSP: an unpack → mount → power → network → power-on
+          verification task chain, each task with prerequisites, correctly classified Warning/Caution/Note
+          admonitions, and a results statement handing off to the next task — including the
+          security-relevant caution that cabling the wrong interface can expose CUI to an unauthorized
+          segment. Front- and rear-panel reference topics with labeled line drawings cross-link every
+          connector back to the procedure that uses it. Demonstrates DITA task/reference typing and
+          hazard-statement discipline on hardware documentation.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/27-vsg100-installation-guide.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/27-vsg100-installation-guide.pdf" download>Download</a>
         </div>
       </article>
 
@@ -428,6 +485,32 @@
         <div class="card-actions">
           <a class="btn btn-primary" href="samples/15-alignment-brief-linux-cli-ecn100.pdf" target="_blank" rel="noopener">View PDF</a>
           <a class="btn btn-ghost" href="samples/15-alignment-brief-linux-cli-ecn100.pdf" download>Download</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-25 · NTP Phase I → II Transition · NAVEDTRA M-142.1, App. H · 9 Sep 2026</div>
+            <h3 class="card-title">Resource Sponsor Funding Notification</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">Naval Letter Format</span>
+          <span class="tag">Funding Authorization</span>
+          <span class="tag">Phase II Gate</span>
+        </div>
+        <p class="card-desc">
+          The two-page naval letter that unlocks Phase II — written in standard naval correspondence
+          format (SSIC, serial, From/To/Subj/Ref/Encl structure, numbered paragraphs, by-direction
+          signature block). Confirms funding for requirements development and the lab-environment ROM
+          flagged in the Alignment Brief, while stating plainly that Phase III remains blocked until a
+          Curriculum Control Authority is designated. Demonstrates that the chain's format range extends
+          to official correspondence, not just planning documents.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/25-funding-notification-ecn100.pdf" target="_blank" rel="noopener">View PDF</a>
+          <a class="btn btn-ghost" href="samples/25-funding-notification-ecn100.pdf" download>Download</a>
         </div>
       </article>
 
