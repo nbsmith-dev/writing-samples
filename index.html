@@ -247,13 +247,24 @@
     outline:2px solid var(--amber);
     outline-offset:2px;
   }
+
+  /* ---------- Diagonal SAMPLE watermark ---------- */
+  body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='420'%20height='320'%3E%3Ctext%20x='210'%20y='160'%20font-family='monospace'%20font-size='44'%20font-weight='700'%20letter-spacing='10'%20fill='%235C6B73'%20fill-opacity='0.11'%20text-anchor='middle'%20transform='rotate(-30%20210%20160)'%3ESAMPLE%3C/text%3E%3C/svg%3E");
+    background-repeat:repeat;
+  }
 </style>
 </head>
 <body>
 
 <header class="titleblock">
   <div class="tb-inner">
-    <div class="tb-eyebrow">DOC-NBS-PORTFOLIO-001 · Issue 4 · 2026-08-17</div>
+    <div class="tb-eyebrow">DOC-NBS-PORTFOLIO-001 · Issue 5 · 2026-08-17</div>
     <h1 class="tb-title">Nathan B. Smith</h1>
     <p class="tb-sub">Senior Principal Technical Writer &amp; Systems Engineer — S1000D / MIL-STD / IETM Documentation for Defense &amp; Aerospace Programs</p>
     <table class="tb-fields">
@@ -291,14 +302,16 @@
       <h2 id="about-h">General Information</h2>
     </div>
     <p class="lede">
-      This repository collects representative technical writing samples across six skill areas: secure
-      network systems (RMF/NIST security documentation for a deployable platform), curriculum development
-      and systems engineering (a full NAVEDTRA-conformant instructional design document chain), structured
-      authoring (S1000D IETMs, DITA topic sets), standards compliance (DID/CDRL and CUI-aware documentation
-      practice), editing craft (Simplified Technical English and plain-language reference tools), and systems
-      &amp; process thinking (documentation change control, governance workflows, and engineering literacy) —
-      drawn from 15+ years writing DoD- and industrial-compliant documentation for programs including the
-      RQ-4 Global Hawk, EMALS/Ford-class carriers, and commercial aircraft maintenance publications.
+      This repository collects representative technical writing samples across seven skill areas: secure
+      network systems (RMF/NIST security documentation for a deployable platform), API documentation
+      (developer guides and endpoint references authored in DITA and published as modern docs-site pages),
+      curriculum development and systems engineering (a full NAVEDTRA-conformant instructional design
+      document chain), structured authoring (S1000D IETMs, DITA topic sets), standards compliance
+      (DID/CDRL and CUI-aware documentation practice), editing craft (Simplified Technical English and
+      plain-language reference tools), and systems &amp; process thinking (documentation change control,
+      governance workflows, and engineering literacy) — drawn from 15+ years writing DoD- and
+      industrial-compliant documentation for programs including the RQ-4 Global Hawk, EMALS/Ford-class
+      carriers, and commercial aircraft maintenance publications.
     </p>
     <div class="stamp">Sample — Hypothetical / Non-Proprietary</div>
     <p class="lede" style="margin-top:-0.8rem;">
@@ -416,9 +429,56 @@
     </div>
   </section>
 
-  <section aria-labelledby="proposal-h" style="margin-top:2.4rem;">
+  <section aria-labelledby="api-h" style="margin-top:2.4rem;">
     <div class="section-head">
       <span class="section-num">02</span>
+      <h2 id="api-h">API Documentation</h2>
+    </div>
+    <p class="lede" style="margin-bottom:1.2rem;">
+      Developer-facing documentation authored in structured source and published in the format
+      developers expect — quickstarts that run, endpoint references that scan, and a security model
+      explained before the first request is made.
+    </p>
+
+    <div class="sample-list">
+
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <div class="card-dmc">SAMPLE-28 · TC-77 · VMS API Developer Guide · DITA Concept/Task/Reference</div>
+            <h3 class="card-title">Vehicle Management API — TC-77 Skylark Autonomous Air Vehicle</h3>
+          </div>
+        </div>
+        <div class="tags">
+          <span class="tag">REST API</span>
+          <span class="tag">DITA</span>
+          <span class="tag">mTLS / SNS</span>
+          <span class="tag">Linux CLI</span>
+        </div>
+        <p class="card-desc">
+          A developer guide for the REST API of a fictional autonomous air vehicle, authored as a DITA
+          concept/task/reference topic set and rendered as a single-page docs site in the style of major
+          tech-company API documentation — grouped sidebar navigation, scroll-tracked section
+          highlighting, and copy-ready code blocks. Covers the Secure Network Systems (SNS) security
+          model (mutual TLS, scoped 15-minute bearer tokens, session audit, TLS 1.3-only gateway), a
+          five-step Linux command-line quickstart using <span class="mono">openssl</span>,
+          <span class="mono">curl</span>, and <span class="mono">jq</span> from certificate verification
+          through token revocation, and endpoint/response-code reference tables with token scopes and
+          operator actions. Demonstrates API documentation craft on defense-flavored subject matter:
+          single-sourced from structured XML, published as a modern developer experience.
+        </p>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="samples/28-tc77-vms-api-guide.html" target="_blank" rel="noopener">View</a>
+          <a class="btn btn-ghost" href="samples/28-tc77-vms-api-guide-dita-source.zip" download>Download DITA Source (.zip)</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section aria-labelledby="proposal-h" style="margin-top:2.4rem;">
+    <div class="section-head">
+      <span class="section-num">03</span>
       <h2 id="proposal-h">Featured Proposal</h2>
     </div>
     <p class="lede" style="margin-bottom:1.2rem;">
@@ -454,7 +514,7 @@
 
   <section aria-labelledby="structured-h" style="margin-top:2.4rem;">
     <div class="section-head">
-      <span class="section-num">03</span>
+      <span class="section-num">04</span>
       <h2 id="structured-h">Structured Authoring</h2>
     </div>
     <p class="lede" style="margin-bottom:1.2rem;">
@@ -591,7 +651,7 @@
 
   <section aria-labelledby="standards-h" style="margin-top:2.4rem;">
     <div class="section-head">
-      <span class="section-num">04</span>
+      <span class="section-num">05</span>
       <h2 id="standards-h">Standards Compliance</h2>
     </div>
     <p class="lede" style="margin-bottom:1.2rem;">
@@ -631,7 +691,7 @@
 
   <section aria-labelledby="editing-h" style="margin-top:2.4rem;">
     <div class="section-head">
-      <span class="section-num">05</span>
+      <span class="section-num">06</span>
       <h2 id="editing-h">Editing Craft</h2>
     </div>
     <p class="lede" style="margin-bottom:1.2rem;">
@@ -745,7 +805,7 @@
 
   <section aria-labelledby="systems-h" style="margin-top:2.4rem;">
     <div class="section-head">
-      <span class="section-num">06</span>
+      <span class="section-num">07</span>
       <h2 id="systems-h">Systems &amp; Process Thinking</h2>
     </div>
     <p class="lede" style="margin-bottom:1.2rem;">
@@ -836,7 +896,7 @@
 
   <section aria-labelledby="curriculum-h" style="margin-top:2.4rem;">
     <div class="section-head">
-      <span class="section-num">07</span>
+      <span class="section-num">08</span>
       <h2 id="curriculum-h">Curriculum Development &amp; Systems Engineering</h2>
     </div>
     <p class="lede" style="margin-bottom:1.2rem;">
