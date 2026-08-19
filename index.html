@@ -1,13 +1,57 @@
 <!DOCTYPE html>
+<!--
+  ============================================================================
+  Nathan B. Smith - Technical Writing Samples (portfolio index)
+  Repo: github.com/nbsmith-dev/writing-samples  |  Live: nbsmith-dev.github.io/writing-samples
+
+  WHAT THIS FILE IS
+  A single, self-contained static page. No framework, no build step, no JS of
+  its own - all styling lives in the one <style> block below, and every sample
+  is a hand-written <article class="card">. The only outside dependencies are
+  Google Fonts (IBM Plex Sans/Mono) and the Cloudflare Web Analytics beacon at
+  the bottom of <body>.
+
+  DESIGN INTENT
+  The page imitates a controlled engineering document: a navy title block with
+  metadata fields, numbered sections, a mono typeface for identifiers, a red
+  "SAMPLE" stamp, and a diagonal SAMPLE watermark tiled over the whole viewport.
+  The look is doing the same job as the disclaimers - signalling at a glance
+  that nothing here is a real, deliverable, controlled document.
+
+  HOW TO EDIT
+  - Add a sample: copy an existing <article class="card"> block and change the
+    card-dmc line, title, tags, description, and the two/three href values.
+  - Files live in samples/ and are named nn-slug.ext, where nn matches the
+    SAMPLE-nn ID printed in the card-dmc line.
+  - Bump the Issue number and date in .tb-eyebrow when the page changes.
+  ============================================================================
+-->
+<!-- lang="en-US" drives screen-reader pronunciation and browser translation prompts. -->
 <html lang="en-US">
 <head>
 <meta charset="UTF-8">
+<!-- charset first (parser needs it early); viewport makes the layout respect device width instead of
+     rendering desktop-wide and zooming out on phones. -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nathan B. Smith — Technical Writing Samples</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<!-- Fonts: the two preconnects open the TCP/TLS handshakes to Google's CSS and font-file hosts before
+     the stylesheet below asks for them, shaving a round trip. crossorigin is required on the gstatic
+     one because font files are fetched in CORS mode. display=swap renders text in a fallback font
+     immediately and swaps in IBM Plex when it arrives, so nothing is invisible while loading. --><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+  /* ------------------------------------------------------------------
+     DESIGN TOKENS
+     Every color used on the page is declared once here and referenced as
+     var(--name). Change a value here and it updates everywhere - this is
+     what keeps the palette consistent across ~30 hand-written cards.
+     The palette is deliberately drafting-room: navy title block, off-white
+     "paper" ground, steel greys, and three accent colors used as semantic
+     signals - amber = attention/proposal, red = sample stamp, green =
+     security-related sections. --radius is 2px because sharp corners read
+     as document, rounded corners read as consumer app.
+     ------------------------------------------------------------------ */
   :root{
     --navy:#14233A;
     --navy-2:#1D3252;
@@ -23,6 +67,10 @@
     --green:#3F6B4C;
     --radius:2px;
   }
+  /* Global reset + base type.
+     box-sizing:border-box on everything means padding and borders count inside
+     a declared width, so the fixed max-width containers below never overflow.
+     scroll-behavior:smooth animates the jump when an in-page #anchor is used. */
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
@@ -33,20 +81,32 @@
     font-size:16px;
     line-height:1.55;
   }
+  /* Two utilities: .mono for inline code-ish text inside prose (e.g. openssl, curl, jq
+     in the API card), and a{color:inherit} so links take their color from context
+     rather than default browser blue - each link's look is set by its own class. */
   .mono{font-family:'IBM Plex Mono',monospace;}
   a{color:inherit;}
 
-  /* ---------- Title block header ---------- */
+  /* ---------- Title block header ----------
+     The navy band at the top, styled after the title block of an engineering
+     drawing. The 6px amber bottom border is the only heavy rule on the page and
+     acts as the visual separator between "document header" and "document body". */
   header.titleblock{
     background:var(--navy);
     color:var(--paper);
     border-bottom:6px solid var(--amber);
   }
+  /* .tb-inner is the width limiter: max-width + margin:0 auto centers the content
+     column. Note the same 1040px value is repeated on the main element below - the two must
+     stay in sync or the header and body columns will not line up. */
   .tb-inner{
     max-width:1040px;
     margin:0 auto;
     padding:2.2rem 1.5rem 1.6rem;
   }
+  /* Small-caps mono line above the name - the document control number, issue, and
+     date. Purely decorative in function but it sets the whole "controlled document"
+     premise, so it needs to be updated by hand whenever the page content changes. */
   .tb-eyebrow{
     font-family:'IBM Plex Mono',monospace;
     font-size:0.72rem;
@@ -67,6 +127,13 @@
     margin:0 0 1.6rem;
     max-width:620px;
   }
+  /* The metadata field strip (Location / Clearance / Contact / LinkedIn / Resume).
+     A single-row <table> used here for layout so the fields divide into equal
+     cells with vertical rules between them, mimicking a drawing's title-block
+     fields. border-collapse merges the cell borders into single hairlines; the
+     :last-child rule strips the trailing divider off the right-hand cell.
+     (A <dl> would be more semantic; the mobile media query at the bottom of this
+     stylesheet unstacks the table into a column so it stays readable either way.) */
   table.tb-fields{
     width:100%;
     border-collapse:collapse;
@@ -94,12 +161,18 @@
   }
   table.tb-fields a.field-value{ text-decoration:underline; text-underline-offset:2px; }
 
-  /* ---------- Body ---------- */
+  /* ---------- Body ----------
+     Same 1040px measure as the header, with generous bottom padding so the last
+     card never sits flush against the footer. */
   main{
     max-width:1040px;
     margin:0 auto;
     padding:2.6rem 1.5rem 4rem;
   }
+  /* Section heading rule: number and title on one baseline (align-items:baseline
+     keeps the small mono number optically aligned with the larger heading), with a
+     2px rule underneath. The number is blue and the heading is uppercase ink -
+     borrowed straight from numbered-section technical manual conventions. */
   .section-head{
     display:flex;
     align-items:baseline;
@@ -119,6 +192,8 @@
     text-transform:uppercase;
     letter-spacing:0.05em;
   }
+  /* Introductory paragraph under a section heading. max-width:680px caps the
+     measure at roughly 75 characters - past that, the eye loses the line return. */
   .lede{
     color:var(--steel);
     max-width:680px;
@@ -126,7 +201,11 @@
     font-size:0.97rem;
   }
 
-  /* stamp */
+  /* ---------- Stamp ----------
+     The red "Sample - Hypothetical / Non-Proprietary" box in section 00.
+     transform:rotate(-2deg) is what sells it as a rubber stamp rather than a
+     badge. Note this rule hard-codes border-radius:2px instead of using
+     var(--radius) - same value today, but it will not follow if the token changes. */
   .stamp{
     display:inline-block;
     font-family:'IBM Plex Mono',monospace;
@@ -141,12 +220,19 @@
     margin-bottom:1.6rem;
   }
 
-  /* ---------- Sample cards ---------- */
+  /* ---------- Sample cards ----------
+     .sample-list is the vertical stack (flex column + gap) that holds the cards
+     in a section. Using gap rather than margins on the cards means spacing is
+     owned by the container, so a card can be moved between sections unchanged. */
   .sample-list{
     display:flex;
     flex-direction:column;
     gap:1.1rem;
   }
+  /* The card itself. The 4px left border is the section color-code: default blue,
+     overridden inline to green on security samples and amber on the proposal.
+     Background is a hair lighter than the page ground so cards lift off it without
+     needing a shadow. */
   .card{
     background:#F5F6F1;
     border:1px solid var(--line);
@@ -154,6 +240,9 @@
     border-radius:var(--radius);
     padding:1.3rem 1.4rem 1.4rem;
   }
+  /* Header row of a card. justify-content:space-between + flex-wrap is set up to
+     put a second element (a status badge, say) on the right; with only one child
+     today it simply left-aligns and wraps safely on narrow screens. */
   .card-top{
     display:flex;
     justify-content:space-between;
@@ -161,6 +250,9 @@
     gap:1rem;
     flex-wrap:wrap;
   }
+  /* "DMC" line - the mono identifier strip above each card title (sample ID, data
+     module code or DID number, standard, and date). This is the detail that makes
+     the cards read as catalogued documents rather than blog posts. */
   .card-dmc{
     font-family:'IBM Plex Mono',monospace;
     font-size:0.7rem;
@@ -172,6 +264,8 @@
     font-weight:600;
     margin:0.25rem 0 0.5rem;
   }
+  /* Keyword chips under the title - standards, formats, and techniques. Purely
+     scannable metadata; they are not filters (there is no JS on this page). */
   .tags{
     display:flex;
     flex-wrap:wrap;
@@ -200,6 +294,10 @@
     gap:0.6rem;
     flex-wrap:wrap;
   }
+  /* Action buttons. These are <a> elements styled as buttons, not <button>s -
+     correct, since every one of them navigates to or downloads a file.
+     .btn-primary (solid navy) is always "view"; .btn-ghost (outline) is always
+     "download". The transition only animates color, so hover stays cheap. */
   .btn{
     font-family:'IBM Plex Mono',monospace;
     font-size:0.75rem;
@@ -225,7 +323,10 @@
   }
   .btn-ghost:hover{ background:var(--navy); color:var(--paper); }
 
-  /* ---------- Footer ---------- */
+  /* ---------- Footer ----------
+     Mirrors the header band so the page is book-ended in navy. Carries the
+     copyright line and the "not affiliated with any employer named within"
+     disclaimer that pairs with the per-PDF cover-page disclaimers. */
   footer{
     background:var(--navy);
     color:var(--steel-light);
@@ -236,6 +337,12 @@
   }
   footer a{ color:#C9D3D9; }
 
+  /* ---------- Mobile ----------
+     Below 640px the title-block table stops behaving as a table (display:block on
+     the table, flex column on the row) so the five metadata fields stack vertically
+     with horizontal rules between them instead of squeezing into five columns.
+     The h1 also steps down from 2.1rem to 1.6rem. Everything else - the card
+     stack, the tag rows, the button rows - already reflows on its own via flex-wrap. */
   @media (max-width:640px){
     table.tb-fields{ display:block; }
     table.tb-fields tr{ display:flex; flex-direction:column; }
@@ -243,12 +350,28 @@
     .tb-title{ font-size:1.6rem; }
   }
 
+  /* Accessibility: a visible amber focus ring for keyboard users only
+     (:focus-visible, not :focus, so mouse clicks do not draw it). With ~70 links on
+     this page, this is what makes tabbing through it navigable. offset:2px keeps
+     the ring off the element's own border. */
   :focus-visible{
     outline:2px solid var(--amber);
     outline-offset:2px;
   }
 
-  /* ---------- Diagonal SAMPLE watermark ---------- */
+  /* ---------- Diagonal SAMPLE watermark ----------
+     A generated pseudo-element layered over the entire viewport:
+       - position:fixed + inset:0  -> covers the window and stays put while scrolling
+       - z-index:9999              -> sits above all content
+       - pointer-events:none       -> CRITICAL. Without it this layer would swallow
+                                      every click and no link on the page would work.
+       - background-image           -> a URL-encoded inline SVG (no HTTP request, no
+                                      image file to maintain) holding one rotated
+                                      "SAMPLE" text node at 11% opacity, tiled by
+                                      background-repeat across a 420x320 grid.
+     Encoding notes for anyone editing the SVG: %3C/%3E are < and >, %20 is a space,
+     and the fill color %235C6B73 is #5C6B73 - the # must stay percent-encoded or the
+     data URI breaks. */
   body::after{
     content:"";
     position:fixed;
@@ -262,6 +385,13 @@
 </head>
 <body>
 
+<!-- ========================= TITLE BLOCK ==========================
+     Document header: control number/issue/date, name, one-line positioning
+     statement, and the five metadata fields. The Resume link uses the download
+     attribute so it saves rather than opening in the browser PDF viewer; the
+     external LinkedIn link uses target="_blank" with rel="noopener", which
+     prevents the opened tab from getting scripting access back to this page.
+     ================================================================ -->
 <header class="titleblock">
   <div class="tb-inner">
     <div class="tb-eyebrow">DOC-NBS-PORTFOLIO-001 · Issue 5 · 2026-08-17</div>
@@ -294,8 +424,17 @@
   </div>
 </header>
 
+
+<!-- Page body. Sections are numbered 00-08 by hand in the .section-num spans;
+     the numbers are display only, so inserting a section means renumbering the
+     ones after it. Each <section> carries aria-labelledby pointing at its own
+     <h2> id, which gives screen readers a named landmark per section. -->
 <main>
 
+    <!-- 00 - GENERAL INFORMATION
+         Scope statement plus the blanket disclaimer. The stamp and the paragraph
+         after it are the page's legal spine: nothing classified, export-controlled,
+         or proprietary; all part numbers and values fictional. -->
   <section aria-labelledby="about-h">
     <div class="section-head">
       <span class="section-num">00</span>
@@ -322,6 +461,12 @@
     </p>
   </section>
 
+    <!-- 01 - SECURE NETWORK SYSTEMS
+         Cards in this section override the left border to green via inline style,
+         marking them as the security-documentation group. Note the inline
+         style="margin-top:2.4rem;" repeated on every section below: it is doing the
+         job of a class (something like .section + .section {margin-top:2.4rem}) and
+         is the main cleanup opportunity in this file. -->
   <section aria-labelledby="sns-h" style="margin-top:2.4rem;">
     <div class="section-head">
       <span class="section-num">01</span>
@@ -336,6 +481,28 @@
 
     <div class="sample-list">
 
+            <!-- ===============================================================
+                 CARD ANATOMY - every sample card on this page follows this shape:
+
+                   <article class="card">        one sample; optional inline
+                                                 border-left-color = section color code
+                     <div class="card-top">      identifier + title
+                       .card-dmc                 SAMPLE-nn, doc/DMC number, standard, date
+                       h3.card-title             human-readable title
+                     <div class="tags">          .tag chips: standards, formats, techniques
+                     <p class="card-desc">       what it demonstrates, not just what it is
+                     <div class="card-actions">  .btn-primary = view, .btn-ghost = download
+
+                 Link conventions:
+                   target="_blank" rel="noopener"  on view links, so the sample opens in
+                                                   a new tab and cannot script this one
+                   download                        on download links, forcing save instead
+                                                   of in-browser display
+                   href="samples/nn-slug.ext"      nn must match the SAMPLE-nn in .card-dmc
+
+                 The remaining ~30 cards repeat this structure and are not individually
+                 commented; only the ones that deviate are flagged.
+                 =============================================================== -->
       <article class="card" style="border-left-color:var(--green);">
         <div class="card-top">
           <div>
@@ -362,6 +529,8 @@
         <div class="card-actions">
           <a class="btn btn-primary" href="samples/14-ecn100-sspp.html" target="_blank" rel="noopener">View</a>
           <a class="btn btn-ghost" href="samples/14-ecn100-sspp.pdf" download>Download PDF</a>
+                    <!-- Third action button: this sample ships HTML + PDF + a zip of source SVGs.
+                         Cards with extra artifacts just add another .btn-ghost here. -->
           <a class="btn btn-ghost" href="samples/14-ecn100-diagrams-svg.zip" download>Download SVG Diagrams (.zip)</a>
         </div>
       </article>
@@ -429,6 +598,7 @@
     </div>
   </section>
 
+    <!-- 02 - API DOCUMENTATION -->
   <section aria-labelledby="api-h" style="margin-top:2.4rem;">
     <div class="section-head">
       <span class="section-num">02</span>
@@ -476,6 +646,10 @@
     </div>
   </section>
 
+    <!-- 03 - FEATURED PROPOSAL
+         One-card section, amber left border, no SAMPLE-nn ID - this is a real
+         targeted white paper rather than a numbered portfolio sample, and the
+         card-dmc line reads PROPOSAL instead of SAMPLE-nn to say so. -->
   <section aria-labelledby="proposal-h" style="margin-top:2.4rem;">
     <div class="section-head">
       <span class="section-num">03</span>
@@ -512,6 +686,7 @@
     </div>
   </section>
 
+    <!-- 04 - STRUCTURED AUTHORING (S1000D data modules, DITA topic sets) -->
   <section aria-labelledby="structured-h" style="margin-top:2.4rem;">
     <div class="section-head">
       <span class="section-num">04</span>
@@ -649,6 +824,7 @@
     </div>
   </section>
 
+    <!-- 05 - STANDARDS COMPLIANCE (DID/CDRL, authority hierarchy, CUI practice) -->
   <section aria-labelledby="standards-h" style="margin-top:2.4rem;">
     <div class="section-head">
       <span class="section-num">05</span>
@@ -689,6 +865,10 @@
     </div>
   </section>
 
+    <!-- 06 - EDITING CRAFT
+         Includes the two interactive HTML cheat sheets; those cards link to
+         samples/*.html rather than a PDF, so they have a View button and no
+         Download PDF counterpart. -->
   <section aria-labelledby="editing-h" style="margin-top:2.4rem;">
     <div class="section-head">
       <span class="section-num">06</span>
@@ -803,6 +983,7 @@
     </div>
   </section>
 
+    <!-- 07 - SYSTEMS & PROCESS THINKING (governance, change control, engineering literacy) -->
   <section aria-labelledby="systems-h" style="margin-top:2.4rem;">
     <div class="section-head">
       <span class="section-num">07</span>
@@ -894,6 +1075,14 @@
     </div>
   </section>
 
+    <!-- 08 - CURRICULUM DEVELOPMENT & SYSTEMS ENGINEERING
+         The longest section: the ECN-100 NAVEDTRA document chain, SAMPLE-15
+         through SAMPLE-25, ordered by NTP phase and dated in sequence so the
+         cards read as a single project timeline rather than a pile of documents.
+         Housekeeping: confirm every samples/1x-*.pdf and 2x-*.pdf referenced
+         below has actually been pushed to the repo - these cards were written
+         ahead of the file uploads, and a missing file is a silent 404 on a live
+         page a hiring manager is clicking through. -->
   <section aria-labelledby="curriculum-h" style="margin-top:2.4rem;">
     <div class="section-head">
       <span class="section-num">08</span>
@@ -1183,7 +1372,13 @@
   </section>
 
 </main>
+<!-- Cloudflare Web Analytics: privacy-preserving pageview counting (no cookies).
+     The token identifies the site in the Cloudflare dashboard and is safe to expose.
+     Loaded as type="module", so it is deferred by default and cannot block rendering.
+     Conventionally this goes just before </body>; it sits between </main> and
+     <footer> here, which works but is worth moving down if the file is touched. -->
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e40721fa34044061b30d9633ae2054c9"}'></script><!-- End Cloudflare Web Analytics -->
+<!-- Page footer - copyright, purpose statement, and non-affiliation disclaimer. -->
 <footer>
   <div>© 2026 Nathan B. Smith · Samples prepared for demonstration purposes only · Not affiliated with any employer named within</div>
 </footer>
